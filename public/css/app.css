@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --background-table: #2ba7e2;
+}
+
+.bg-color-card {
+    background-color: var(--background-table);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.font-Piazzolla {
+    font-family: "Piazzolla";
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Piazzolla";
+}
+
+.object-cover {
+    height: 528px;
+}
+
+.img-background-cover {
+    background-image: url("/images/23be26dd73ac194be56fa8ac893771b6.jpeg");
+    background-size: cover;
+}
+
+nav.bg-transparent {
+    background-color: transparent !important;
+}
+
+.logo-sd {
+    height: 73px;
+}
+
+.flex.space-x-6 {
+    font-size: 13px;
+}
+
+.text-indent-8 {
+    text-indent: 2rem; /* 2rem = 32px (indent-8 di Tailwind) */
+}
+
+/* Footer */
+.font-open-sans {
+    font-family: "Open Sans", sans-serif;
+}
+
+.instagram {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Animasi untuk menu item */
+.menu-item-enter {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.menu-item-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+#overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+#sidebar {
+    background-color: rgba(212, 212, 212, 0.75);
+}
