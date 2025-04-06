@@ -9,7 +9,7 @@
                     src="{{ asset('images/prestasi/IMG-20241019-WA0047.png') }}" width="800" />
                 <div class="absolute bottom-0 left-0 right-0 text-white py-2 rounded-b-lg"
                     style="background-color: rgba(14, 165, 233, 0.75);">
-                    <h2 class="text-xl font-semibold">
+                    <h2 class="text-lg lg:text-2xl font-semibold">
                         Perlombaan FTBI
                     </h2>
                 </div>
@@ -20,7 +20,7 @@
                     src="{{ asset('images/prestasi/IMG-20241017-WA0117.png') }}" width="800" />
                 <div class="absolute bottom-0 left-0 right-0 text-white py-2 rounded-b-lg"
                     style="background-color: rgba(14, 165, 233, 0.75);">
-                    <h2 class="text-xl font-semibold">
+                    <h2 class="text-lg lg:text-2xl font-semibold">
                         Pembagian hadiah maulid nabi muhammad SAW
                     </h2>
                 </div>
@@ -31,7 +31,7 @@
                     src="{{ asset('images/prestasi/IMG-20241017-WA0113.png') }}" width="800" />
                 <div class="absolute bottom-0 left-0 right-0 text-white py-2 rounded-b-lg"
                     style="background-color: rgba(14, 165, 233, 0.75);">
-                    <h2 class="text-xl font-semibold">
+                    <h2 class="text-lg lg:text-2xl font-semibold">
                         Perlombaan Pramuka
                     </h2>
                 </div>
