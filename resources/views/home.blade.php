@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <main class="py-4 md:py-8">
+    <main class="py-4">
         <!-- Welcome Section -->
         <section class="bg-white pt-4 pb-8">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -10,7 +10,7 @@
                 <div class="flex flex-col md:flex-row items-center gap-8 xl:gap-12">
                     <!-- Image -->
                     <div class="w-full lg:w-1/2 xl:w-5/12">
-                        <img alt="School principal giving a speech" class="w-full h-auto object-cover rounded-lg shadow-md"
+                        <img alt="School principal giving a speech" class="w-full h-auto rounded-lg shadow-md"
                             src="{{ asset('images/image 19-HD.png') }}" loading="lazy" />
                     </div>
 
@@ -26,14 +26,14 @@
                                 Assalamualaikum Wr. Wb
                             </p>
 
-                            <p class="mb-2 text-sm lg:text-base">
+                            <p class="text-indent-8 text-justify mb-2 text-sm lg:text-base">
                                 Puji syukur kita panjatkan ke hadirat Allah SWT atas berkat dan limpahan rahmat, taufik,
                                 serta
                                 hidayah-Nya kepada kita semua. Shalawat serta salam terucap kepada junjungan Nabi
                                 Muhammad SAW.
                             </p>
 
-                            <p class="mb-2 text-sm lg:text-base">
+                            <p class="text-indent-8 text-justify mb-2 text-sm lg:text-base">
                                 Alhamdulillah, pada hari ini kita dapat menjalani aktivitas dengan keadaan sehat jasmani
                                 dan rohani;
                                 saya selaku kepala sekolah, mewakili seluruh warga SD Negeri Bojongloa 1 mengucapkan
@@ -132,7 +132,7 @@
             </div>
         </section>
         <!-- Gallery Section -->
-        <section class="py-8 px-8">
+        <section class="py-8 px-4 md:px-8">
             <div class="container mx-auto">
                 <h2 class="text-2xl lg:text-3xl font-bold mb-4">Gallery</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 place-items-center">
@@ -151,7 +151,7 @@
                 </div>
                 <div class="flex justify-center">
                     <a href="{{ route('galeri') }}"
-                        class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-sm md:text-base">
+                        class="px-6 py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 text-sm md:text-base">
                         Lebih Lanjut
                     </a>
                 </div>

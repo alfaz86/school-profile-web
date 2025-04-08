@@ -26,7 +26,7 @@
         <div>
             @if (!request()->routeIs('home'))
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <h1 class="text-white text-2xl md:text-3xl lg:text-4xl font-bold">
+                    <h1 class="text-white text-xl md:text-3xl lg:text-4xl font-bold">
                         {{ $title }}
                     </h1>
                 </div>

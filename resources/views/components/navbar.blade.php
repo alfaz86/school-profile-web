@@ -62,10 +62,10 @@
                 @foreach ($menus as $route => $label)
                     <li>
                         <a href="{{ route($route) }}"
-                            class="block py-3 px-4 text-sm transition-all duration-200 
+                            class="block py-3 px-4 text-sm transition-all duration-200
                         {{ request()->routeIs($route) || request()->is($route . '*')
-                            ? 'text-white font-semibold'
-                            : 'text-black hover:text-white' }}">
+                            ? 'text-white font-bold'
+                            : 'text-black font-bold hover:text-white' }}">
                             {{ $label }}
                         </a>
                     </li>

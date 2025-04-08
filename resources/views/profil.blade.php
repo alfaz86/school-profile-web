@@ -3,7 +3,7 @@
 @section('title', 'Profil Sekolah')
 
 @section('content')
-    <main class="p-8 px-10">
+    <main class="p-8 px-8 md:px-10">
         <!-- Judul -->
         <div class="border-t-2 border-gray-300 my-4 py-4 text-center"></div>
         <h1 class="text-center text-2xl font-bold mb-8">SD Negeri Bojongloa 1</h1>
@@ -120,7 +120,7 @@
             </div>
 
             <!-- Table for Kelas 4-6 -->
-            <div class="">
+            <div class="overflow-x-auto rounded-md">
                 <table class="w-full border-collapse mb-8 overflow-hidden rounded-md">
                     <thead>
                         <tr class="bg-blue-500 text-white text-xs md:text-sm lg:text-base">
@@ -170,12 +170,12 @@
                 <table class="w-full border-collapse mb-8 overflow-hidden rounded-md">
                     <thead>
                         <tr class="bg-blue-500 text-white text-xs md:text-sm lg:text-base">
-                            <th rowspan="2" class="border p-2">No</th>
-                            <th rowspan="2" class="border p-2">Jenis Ruangan</th>
-                            <th rowspan="2" class="border p-2">Jumlah Ruangan</th>
-                            <th rowspan="2" class="border p-2">Jumlah Baik</th>
-                            <th rowspan="2" class="border p-2">Jumlah Rusak</th>
-                            <th colspan="2" class="border p-2">Kategori Kerusakan</th>
+                            <th rowspan="2" class="border p-2 whitespace-nowrap">No</th>
+                            <th rowspan="2" class="border p-2 whitespace-nowrap">Jenis Ruangan</th>
+                            <th rowspan="2" class="border p-2 whitespace-nowrap">Jumlah Ruangan</th>
+                            <th rowspan="2" class="border p-2 whitespace-nowrap">Jumlah Baik</th>
+                            <th rowspan="2" class="border p-2 whitespace-nowrap">Jumlah Rusak</th>
+                            <th colspan="2" class="border p-2 whitespace-nowrap">Kategori Kerusakan</th>
                         </tr>
                         <tr class="bg-blue-500 text-white text-xs md:text-sm lg:text-base">
                             <th class="border p-2">Berat</th>
@@ -188,36 +188,36 @@
                             <td class="border p-2">Ruang Kelas</td>
                             <td class="border p-2">6</td>
                             <td class="border p-2">6</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                         </tr>
                         <tr class="bg-blue-100 text-center text-xs md:text-sm lg:text-base">
                             <td class="border p-2">2</td>
                             <td class="border p-2">Ruang Guru</td>
                             <td class="border p-2">1</td>
                             <td class="border p-2">1</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                         </tr>
                         <tr class="bg-white text-center text-xs md:text-sm lg:text-base">
                             <td class="border p-2">3</td>
                             <td class="border p-2">Ruang Lab</td>
                             <td class="border p-2">1</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                         </tr>
                         <tr class="bg-blue-100 text-center text-xs md:text-sm lg:text-base">
                             <td class="border p-2">4</td>
                             <td class="border p-2">Perpustakaan</td>
                             <td class="border p-2">1</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -226,18 +226,20 @@
 
         <!-- Data Tenaga Pendidik dan Kependidikan Section -->
         <section class="mb-4">
-            <h2 class="text-base md:text-xl font-bold mb-4">Data Tenaga Pendidik dan Kependidikan</h2>
+            <h2 class="text-sm md:text-base lg:text-xl font-bold mb-4">
+                Data Tenaga Pendidik dan Kependidikan
+            </h2>
             <div class="overflow-x-auto rounded-md">
-                <table class="w-full border-collapse mb-8 overflow-hidden rounded-md">
+                <table class="w-full border-collapse mb-8 rounded-md">
                     <thead>
                         <tr class="bg-blue-500 text-white text-xs md:text-sm lg:text-base">
-                            <th class="border p-2">No.</th>
-                            <th class="border p-2">Jumlah Guru / Staff</th>
-                            <th class="border p-2">SD Negeri Bojongloa 1</th>
-                            <th class="border p-2" style="white-space: nowrap">S-1</th>
-                            <th class="border p-2" style="white-space: nowrap">S-2</th>
-                            <th class="border p-2">Sedang Menempuh S-1</th>
-                            <th class="border p-2">Keterangan</th>
+                            <th class="border p-2 whitespace-nowrap">No.</th>
+                            <th class="border p-2 whitespace-nowrap">Jumlah Guru / Staff</th>
+                            <th class="border p-2 whitespace-nowrap md:whitespace-normal">SD Negeri Bojongloa 1</th>
+                            <th class="border p-2 whitespace-nowrap">S-1</th>
+                            <th class="border p-2 whitespace-nowrap">S-2</th>
+                            <th class="border p-2 whitespace-nowrap">Sedang Menempuh S-1</th>
+                            <th class="border p-2 whitespace-nowrap">Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -246,8 +248,8 @@
                             <td class="border p-2">Guru PNS</td>
                             <td class="border p-2">6</td>
                             <td class="border p-2">5</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                             <td class="border p-2">1 Lulusan D3</td>
                         </tr>
                         <tr class="bg-blue-100 text-center text-xs md:text-sm lg:text-base">
@@ -255,8 +257,8 @@
                             <td class="border p-2">Guru Non PNS</td>
                             <td class="border p-2">4</td>
                             <td class="border p-2">4</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                             <td class="border p-2"></td>
                         </tr>
                         <tr class="bg-white text-center text-xs md:text-sm lg:text-base">
@@ -264,17 +266,17 @@
                             <td class="border p-2">Operator</td>
                             <td class="border p-2">1</td>
                             <td class="border p-2">1</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                             <td class="border p-2"></td>
                         </tr>
                         <tr class="bg-blue-100 text-center text-xs md:text-sm lg:text-base">
                             <td class="border p-2">4</td>
                             <td class="border p-2">Penjaga</td>
                             <td class="border p-2">1</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
-                            <td class="border p-2">0</td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
+                            <td class="border p-2"></td>
                             <td class="border p-2"></td>
                         </tr>
                     </tbody>
