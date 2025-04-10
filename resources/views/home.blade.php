@@ -92,7 +92,7 @@
                             </a>
 
                             <!-- Lokasi Card -->
-                            <a href="{{ route('contact') }}"
+                            <a href="{{ route('contact') }}#gmaps"
                                 class="group transform hover:-translate-y-1 transition-transform duration-300">
                                 <div
                                     class="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 h-full border border-gray-100">

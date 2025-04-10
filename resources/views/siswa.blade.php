@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container p-4 md:p-8 lg:p-10">
+    <div class="p-5 lg:p-10">
         <!-- Title and Divider -->
         <div class="border-t-2 border-gray-300 my-4 pt-4 text-center">
         </div>

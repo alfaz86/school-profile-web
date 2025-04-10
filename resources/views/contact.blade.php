@@ -52,7 +52,7 @@
         </div>
     </section>
     {{-- Maps --}}
-    <section class="pb-12 px-4 lg:px-8">
+    <section class="pb-12 px-4 lg:px-8" id="gmaps">
         <div class="container mx-auto px-4 md:px-8">
             <div class="flex justify-center">
                 <div class="w-full aspect-w-16 aspect-h-9 md:aspect-w-2 md:aspect-h-1">
