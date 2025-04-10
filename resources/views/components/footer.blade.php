@@ -20,7 +20,7 @@
                 <li><a href="{{ route('siswa') }}"
                         class="font-open-sans text-gray-800 font-bold text-xs lg:text-sm">Data Siswa</a>
                 </li>
-                <li><a href="{{ route('contact') }}"
+                <li><a href="{{ route('contact') }}#gmaps"
                         class="font-open-sans text-gray-800 font-bold text-xs lg:text-sm">Lokasi</a>
                 </li>
                 <li><a href="{{ route('contact') }}"

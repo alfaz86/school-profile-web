@@ -44,7 +44,8 @@
                     <p class="text-lg md:text-xl lg:text-3xl mt-2 font-bold font-Piazzolla">
                         perjalananmu menuju masa depan
                     </p>
-                    <button class="mt-4 px-8 md:px-12 py-2 font-bold bg-blue-500 text-xs lg:text-sm text-white rounded">
+                    <button onclick="window.location.href='{{ route('contact') }}'"
+                        class="mt-4 px-8 md:px-12 py-2 font-bold bg-blue-500 text-xs lg:text-sm text-white rounded">
                         Contact
                     </button>
                 </div>
