@@ -46,9 +46,7 @@ class UserResource extends Resource
                     ->label('User Role')
                     ->placeholder('Select a role')
                     ->options([
-                        'admin'   => 'Admin',
-                        'teacher' => 'Teacher',
-                        'student' => 'Student',
+                        'admin' => 'Admin',
                     ])
                     ->required(),
             ]);
@@ -62,23 +60,19 @@ class UserResource extends Resource
                     ->label('Nama')
                     ->sortable()
                     ->searchable(),
+
                 TextColumn::make('email')
                     ->label('Email')
                     ->searchable(),
+
                 TextColumn::make('role')
                     ->label('Role')
-                    ->sortable()
-                    ->searchable()
-                    ->formatStateUsing(function ($state) {
-                        return match ($state) {
-                            'admin'   => 'Admin',
-                            'teacher' => 'Teacher',
-                            'student' => 'Student',
-                        };
-                    }),
+                    ->formatStateUsing(fn($state) => ucfirst($state)),
+
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime(),
+
                 TextColumn::make('updated_at')
                     ->label('Updated At')
                     ->dateTime(),
@@ -95,6 +89,12 @@ class UserResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('role', 'admin');
     }
 
     public static function getRelations(): array

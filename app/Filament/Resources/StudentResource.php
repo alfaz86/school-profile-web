@@ -27,11 +27,14 @@ class StudentResource extends Resource
                     ->label('Full Name')
                     ->placeholder('e.g. John Doe')
                     ->required(),
+
                 TextInput::make('nis')
                     ->label('NIS')
                     ->placeholder('e.g. 123456')
+                    ->numeric()
                     ->required()
                     ->unique(Student::class, 'nis', ignoreRecord: true),
+
                 Select::make('gender')
                     ->label('Jenis Kelamin')
                     ->placeholder('Pilih Jenis Kelamin')
@@ -40,8 +43,10 @@ class StudentResource extends Resource
                         'female' => 'Perempuan',
                     ])
                     ->required(),
+
                 TextInput::make('class')
                     ->label('Kelas')
+                    ->numeric()
                     ->placeholder('e.g. 1')
                     ->required(),
             ]);
@@ -55,9 +60,11 @@ class StudentResource extends Resource
                     ->label('Nama')
                     ->sortable()
                     ->searchable(),
+
                 TextColumn::make('nis')
                     ->label('NIS')
                     ->searchable(),
+
                 TextColumn::make('gender')
                     ->label('Jenis Kelamin')
                     ->sortable()
@@ -68,12 +75,15 @@ class StudentResource extends Resource
                             'female' => 'Perempuan',
                         };
                     }),
+
                 TextColumn::make('class')
                     ->label('Kelas')
                     ->sortable(),
+
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime(),
+
                 TextColumn::make('updated_at')
                     ->label('Updated At')
                     ->dateTime(),
