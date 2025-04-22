@@ -1,8 +1,8 @@
 <?php
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Models\User;
+use App\Filament\Resources\StudentResource\Pages;
+use App\Models\Student;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -11,13 +11,13 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class UserResource extends Resource
+class StudentResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = Student::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationLabel = 'User';
+    protected static ?string $navigationLabel = 'Siswa';
 
     public static function form(Form $form): Form
     {
@@ -27,29 +27,22 @@ class UserResource extends Resource
                     ->label('Full Name')
                     ->placeholder('e.g. John Doe')
                     ->required(),
-
-                TextInput::make('email')
-                    ->label('Email Address')
-                    ->placeholder('e.g. john.doe@example.com')
-                    ->email()
+                TextInput::make('nis')
+                    ->label('NIS')
+                    ->placeholder('e.g. 123456')
                     ->required()
-                    ->unique(User::class, 'email', ignoreRecord: true),
-
-                TextInput::make('password')
-                    ->label('Password')
-                    ->placeholder('Minimum 8 characters')
-                    ->password()
-                    ->required()
-                    ->minLength(8),
-
-                Select::make('role')
-                    ->label('User Role')
-                    ->placeholder('Select a role')
+                    ->unique(Student::class, 'nis', ignoreRecord: true),
+                Select::make('gender')
+                    ->label('Jenis Kelamin')
+                    ->placeholder('Pilih Jenis Kelamin')
                     ->options([
-                        'admin'   => 'Admin',
-                        'teacher' => 'Teacher',
-                        'student' => 'Student',
+                        'male'   => 'Laki-laki',
+                        'female' => 'Perempuan',
                     ])
+                    ->required(),
+                TextInput::make('class')
+                    ->label('Kelas')
+                    ->placeholder('e.g. 1')
                     ->required(),
             ]);
     }
@@ -62,20 +55,22 @@ class UserResource extends Resource
                     ->label('Nama')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('email')
-                    ->label('Email')
+                TextColumn::make('nis')
+                    ->label('NIS')
                     ->searchable(),
-                TextColumn::make('role')
-                    ->label('Role')
+                TextColumn::make('gender')
+                    ->label('Jenis Kelamin')
                     ->sortable()
                     ->searchable()
                     ->formatStateUsing(function ($state) {
                         return match ($state) {
-                            'admin'   => 'Admin',
-                            'teacher' => 'Teacher',
-                            'student' => 'Student',
+                            'male'   => 'Laki-laki',
+                            'female' => 'Perempuan',
                         };
                     }),
+                TextColumn::make('class')
+                    ->label('Kelas')
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime(),
@@ -107,9 +102,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit'   => Pages\EditUser::route('/{record}/edit'),
+            'index'  => Pages\ListStudents::route('/'),
+            'create' => Pages\CreateStudent::route('/create'),
+            'edit'   => Pages\EditStudent::route('/{record}/edit'),
         ];
     }
 }
