@@ -3,13 +3,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class Teacher extends Model
 {
     protected $fillable = [
         'name',
-        'nis',
-        'gender',
-        'class',
+        'position',
         'user_id',
     ];
 
@@ -17,10 +15,10 @@ class Student extends Model
     {
         parent::boot();
 
-        static::deleting(function ($student) {
-            // Delete the associated user when the student is deleted
-            if ($student->user) {
-                $student->user->delete();
+        static::deleting(function ($teacher) {
+            // Delete the associated user when the teacher is deleted
+            if ($teacher->user) {
+                $teacher->user->delete();
             }
         });
     }

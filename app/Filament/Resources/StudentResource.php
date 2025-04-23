@@ -13,7 +13,17 @@ use Filament\Tables\Table;
 
 class StudentResource extends Resource
 {
-    protected static ?string $model = Student::class;
+    // protected static ?string $model = Student::class;
+
+    public static function getModelLabel(): string
+    {
+        return 'Siswa';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Siswa';
+    }
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
