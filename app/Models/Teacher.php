@@ -11,6 +11,18 @@ class Teacher extends Model
         'user_id',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($teacher) {
+            // Delete the associated user when the teacher is deleted
+            if ($teacher->user) {
+                $teacher->user->delete();
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
