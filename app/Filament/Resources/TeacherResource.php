@@ -48,7 +48,7 @@ class TeacherResource extends Resource
                     ->placeholder('e.g. Guru Kelas 1')
                     ->required(),
 
-                FileUpload::make('images.file_data')
+                FileUpload::make('image.file_data')
                     ->label('Upload Foto Baru')
                     ->preserveFilenames()
                     ->image()
@@ -68,9 +68,10 @@ class TeacherResource extends Resource
 
                 View::make('livewire.components.image-preview')
                     ->label('Foto Saat Ini')
+                    ->hidden(fn ($record) => !$record)
                     ->viewData([
-                        'fileData' => $form->getRecord()->images->file_data ?? null,
-                        'fileName' => $form->getRecord()->images->file_name ?? null,
+                        'fileData' => $form->getRecord()->image->file_data ?? null,
+                        'fileName' => $form->getRecord()->image->file_name ?? null,
                     ]),
 
 
@@ -81,11 +82,11 @@ class TeacherResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('images.file_data')
+                ImageColumn::make('image.file_data')
                     ->label('Foto Guru')
                     ->getStateUsing(function ($record) {
-                        // Ambil data binary dari relasi images
-                        $fileData = optional($record->images)->file_data;
+                        // Ambil data binary dari relasi image
+                        $fileData = optional($record->image)->file_data;
 
                         if (!$fileData) {
                             return null;

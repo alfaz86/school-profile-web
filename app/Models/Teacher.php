@@ -44,7 +44,7 @@ class Teacher extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function images()
+    public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
     }
