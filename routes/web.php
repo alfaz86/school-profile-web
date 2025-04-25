@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,9 +15,11 @@ Route::get('/guru', function () {
     return view('guru', ['title' => 'Data Guru']);
 })->name('guru');
 
-Route::get('/siswa', function () {
-    return view('siswa', ['title' => 'Data Siswa']);
-})->name('siswa');
+// Route::get('/siswa', function () {
+//     return view('siswa', ['title' => 'Data Siswa']);
+// })->name('siswa');
+
+Route::get('/siswa', [StudentController::class, 'index'])->name('siswa');
 
 Route::get('/galeri', function () {
     return view('galeri', ['title' => 'Galeri SD Negeri Bojongloa 1']);
@@ -36,9 +39,8 @@ Route::get('/profil/visi-misi', function () {
 })->name('visi-misi');
 
 Route::get('/profil/prestasi', function () {
-    return view('partials.prestasi', ['title' => 'Prestasi Siswa']); 
+    return view('partials.prestasi', ['title' => 'Prestasi Siswa']);
 })->name('prestasi');
-
 
 // Partial Galeri Route
 Route::get('/galeri/shalat-dhuha', function () {
@@ -72,5 +74,3 @@ Route::get('/galeri/program', function () {
 Route::get('/galeri/senam', function () {
     return view('partials.senam', ['title' => 'Galeri SD Negeri Bojongloa 1']);
 })->name('senam');
-
-

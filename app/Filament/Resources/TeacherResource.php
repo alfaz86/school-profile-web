@@ -1,17 +1,24 @@
 <?php
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TeacherResource\Pages;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
+use App\Models\Image;
+use App\Models\Teacher;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
+use App\Filament\Resources\TeacherResource\Pages;
+use Filament\Forms\Components\View;
+
 
 class TeacherResource extends Resource
 {
-    // protected static ?string $model = Teacher::class;
+    protected static ?string $model = Teacher::class;
 
     public static function getModelLabel(): string
     {
@@ -23,7 +30,7 @@ class TeacherResource extends Resource
         return 'Guru';
     }
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     protected static ?string $navigationLabel = 'Guru';
 
@@ -40,6 +47,33 @@ class TeacherResource extends Resource
                     ->label('Jabatan')
                     ->placeholder('e.g. Guru Kelas 1')
                     ->required(),
+
+                FileUpload::make('images.file_data')
+                    ->label('Upload Foto Baru')
+                    ->preserveFilenames()
+                    ->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
+                    ->rules(['image', 'mimes:jpeg,png,jpg', 'max:5120'])
+                    ->saveUploadedFileUsing(function ($file, $get, $set) {
+                        $path = Storage::disk('public')->putFile('', $file);
+
+                        session()->flash('image_data', [
+                            'file_data' => file_get_contents($file->getRealPath()),
+                            'file_name' => $file->getClientOriginalName(),
+                            'file_path' => $path,
+                        ]);
+
+                        return $path;
+                    }),
+
+                View::make('livewire.components.image-preview')
+                    ->label('Foto Saat Ini')
+                    ->viewData([
+                        'fileData' => $form->getRecord()->images->file_data ?? null,
+                        'fileName' => $form->getRecord()->images->file_name ?? null,
+                    ]),
+
+
             ]);
     }
 
@@ -47,6 +81,26 @@ class TeacherResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('images.file_data')
+                    ->label('Foto Guru')
+                    ->getStateUsing(function ($record) {
+                        // Ambil data binary dari relasi images
+                        $fileData = optional($record->images)->file_data;
+
+                        if (!$fileData) {
+                            return null;
+                        }
+
+                        // Ubah menjadi base64
+                        $base64 = base64_encode($fileData);
+
+                        // Tentukan mime type. Misalnya: image/jpeg
+                        $mime = 'image/jpeg'; // atau image/png, sesuaikan dengan file asli
+
+                        return "data:{$mime};base64,{$base64}";
+                    })
+                    ->size(50),
+
                 TextColumn::make('name')
                     ->label('Nama')
                     ->searchable()
