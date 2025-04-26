@@ -3,6 +3,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StudentResource\Pages;
 use App\Models\Student;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -13,7 +15,9 @@ use Filament\Tables\Table;
 
 class StudentResource extends Resource
 {
-    // protected static ?string $model = Student::class;
+    protected static ?string $model = Student::class;
+
+    protected static ?int $navigationSort = 3;
 
     public static function getModelLabel(): string
     {
@@ -33,32 +37,46 @@ class StudentResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->label('Full Name')
-                    ->placeholder('e.g. John Doe')
-                    ->required(),
+                Section::make('Informasi Pribadi')
+                    ->description('Silakan isi data pribadi siswa.')
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label('Nama Lengkap')
+                                    ->placeholder('Contoh: John Doe')
+                                    ->required(),
 
-                TextInput::make('nis')
-                    ->label('NIS')
-                    ->placeholder('e.g. 123456')
-                    ->numeric()
-                    ->required()
-                    ->unique(Student::class, 'nis', ignoreRecord: true),
+                                TextInput::make('nis')
+                                    ->label('NIS')
+                                    ->placeholder('Contoh: 123456')
+                                    ->numeric()
+                                    ->required()
+                                    ->unique(Student::class, 'nis', ignoreRecord: true),
+                            ]),
+                    ]),
 
-                Select::make('gender')
-                    ->label('Jenis Kelamin')
-                    ->placeholder('Pilih Jenis Kelamin')
-                    ->options([
-                        'male'   => 'Laki-laki',
-                        'female' => 'Perempuan',
-                    ])
-                    ->required(),
+                Section::make('Informasi Tambahan')
+                    ->description('Lengkapi data tambahan siswa.')
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                Select::make('gender')
+                                    ->label('Jenis Kelamin')
+                                    ->placeholder('Pilih Jenis Kelamin')
+                                    ->options([
+                                        'male'   => 'Laki-laki',
+                                        'female' => 'Perempuan',
+                                    ])
+                                    ->required(),
 
-                TextInput::make('class')
-                    ->label('Kelas')
-                    ->numeric()
-                    ->placeholder('e.g. 1')
-                    ->required(),
+                                TextInput::make('class')
+                                    ->label('Kelas')
+                                    ->numeric()
+                                    ->placeholder('Contoh: 1')
+                                    ->required(),
+                            ]),
+                    ]),
             ]);
     }
 
