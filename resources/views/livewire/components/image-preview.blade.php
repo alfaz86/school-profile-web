@@ -29,7 +29,7 @@
         <div class="space-y-2">
             <label class="fi-fo-field-wrp-label inline-flex items-center gap-x-3">
                 <span class="text-sm font-medium leading-6 text-gray-950 dark:text-white">
-                    Current Image
+                    Foto Saat Ini
                 </span>
             </label>
 
@@ -38,7 +38,7 @@
                 <div class=" flex justify-center items-center bg-gray-50 dark:bg-gray-800">
                     <div class="relative" style="max-height: 250px; width: auto;">
                         <img src="{{ $imageUrl }}" class="object-contain mx-auto"
-                            style="max-height: 250px; width: auto; display: block;" alt="Current image preview"
+                            style="max-height: 250px; width: auto; display: block;" alt="Foto Saat Ini"
                             onload="this.parentNode.style.height = this.naturalHeight > 250 ? '250px' : this.naturalHeight + 'px'" />
                     </div>
                 </div>
@@ -56,7 +56,7 @@
         <div class="space-y-2">
             <label class="fi-fo-field-wrp-label inline-flex items-center gap-x-3">
                 <span class="text-sm font-medium leading-6 text-gray-950 dark:text-white">
-                    Current Image
+                    Foto Saat Ini
                 </span>
             </label>
 

@@ -1,11 +1,10 @@
 <?php
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TeacherResource\Pages;
+use App\Filament\Resources\GalleryResource\Pages;
+use App\Models\Gallery;
 use App\Models\Image;
-use App\Models\Teacher;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\View;
@@ -17,54 +16,60 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
 
-class TeacherResource extends Resource
+class GalleryResource extends Resource
 {
-    protected static ?string $model = Teacher::class;
+    protected static ?string $model = Gallery::class;
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 4;
 
     public static function getModelLabel(): string
     {
-        return 'Guru';
+        return 'Galeri';
     }
 
     public static function getPluralModelLabel(): string
     {
-        return 'Guru';
+        return 'Galeri';
     }
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
-
-    protected static ?string $navigationLabel = 'Guru';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make('Informasi Guru')
-                    ->description('Lengkapi data guru berikut ini.')
+                Section::make('Informasi Galeri')
+                    ->description('Masukkan detail galeri foto')
+                    ->icon('heroicon-o-photo')
                     ->schema([
-                        Grid::make(2)
-                            ->schema([
-                                TextInput::make('name')
-                                    ->label('Nama')
-                                    ->placeholder('Contoh: John Doe')
-                                    ->required(),
+                        TextInput::make('title')
+                            ->label('Judul Galeri')
+                            ->placeholder('Contoh: Guru, Siswa, Pramuka')
+                            ->required()
+                            ->columnSpan(1),
 
-                                TextInput::make('position')
-                                    ->label('Jabatan')
-                                    ->placeholder('Contoh: Guru Kelas 1')
-                                    ->required(),
-                            ]),
-                    ]),
+                        TextInput::make('headline')
+                            ->label('Headline')
+                            ->placeholder('Contoh: Kegiatan Pramuka, Kegiatan Belajar Mengajar')
+                            ->required()
+                            ->columnSpan(1),
 
-                Section::make('Foto Guru')
-                    ->description('Upload foto terbaru guru.')
+                        TextInput::make('description')
+                            ->label('Deskripsi')
+                            ->placeholder('Contoh: Beberapa Foto Guru dan Siswa')
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2),
+
+                Section::make('Foto Galeri')
+                    ->description('Unggah dan lihat foto galeri')
+                    ->icon('heroicon-o-camera')
                     ->schema([
-                        FileUpload::make('image.file_data')
+                        FileUpload::make('images.file_data')
                             ->label('Upload Foto Baru')
                             ->preserveFilenames()
                             ->image()
+                            ->columnSpanFull()
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
                             ->rules(['image', 'mimes:jpeg,png,jpg', 'max:5120'])
                             ->saveUploadedFileUsing(function ($file, $get, $set) {
@@ -78,13 +83,14 @@ class TeacherResource extends Resource
 
                                 return $path;
                             }),
-
+                        // dd($form->getRecord()->images),
                         View::make('livewire.components.image-preview')
-                            ->hidden(fn($record) => ! $record)
+                            ->hidden(fn($record) => ! $record || $record->images->isEmpty())
                             ->viewData([
-                                'fileData' => $form->getRecord()?->image?->file_data ?? null,
-                                'fileName' => $form->getRecord()?->image?->file_name ?? null,
-                            ]),
+                                'fileData' => $form->getRecord()?->images->first()?->file_data,
+                                'fileName' => $form->getRecord()?->images->first()?->file_name,
+                            ])
+                            ->columnSpanFull(),
                     ]),
             ]);
     }
@@ -93,11 +99,11 @@ class TeacherResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image.file_data')
+                ImageColumn::make('images.file_data')
                     ->label('Foto Guru')
                     ->getStateUsing(function ($record) {
-                        // Ambil data binary dari relasi image
-                        $fileData = optional($record->image)->file_data;
+                        // Ambil data binary dari relasi images
+                        $fileData = optional($record->images->first())->file_data;
 
                         if (! $fileData) {
                             return null;
@@ -106,27 +112,31 @@ class TeacherResource extends Resource
                         // Ubah menjadi base64
                         $base64 = base64_encode($fileData);
 
-                                              // Tentukan mime type. Misalnya: image/jpeg
-                        $mime = 'image/jpeg'; // atau image/png, sesuaikan dengan file asli
+                                               // Tentukan mime type. Misalnya: images/jpeg
+                        $mime = 'images/jpeg'; // atau images/png, sesuaikan dengan file asli
 
                         return "data:{$mime};base64,{$base64}";
                     })
                     ->size(50),
 
-                TextColumn::make('name')
-                    ->label('Nama')
+                TextColumn::make('title')
+                    ->label('Judul')
+                    ->sortable()
                     ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('position')
-                    ->label('Jabatan')
+                    ->limit(50),
+                TextColumn::make('headline')
+                    ->label('Headline')
+                    ->sortable()
                     ->searchable()
-                    ->sortable(),
-
+                    ->limit(50),
+                TextColumn::make('description')
+                    ->label('Deskripsi')
+                    ->sortable()
+                    ->searchable()
+                    ->limit(50),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime(),
-
                 TextColumn::make('updated_at')
                     ->label('Updated At')
                     ->dateTime(),
@@ -155,9 +165,9 @@ class TeacherResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListTeachers::route('/'),
-            'create' => Pages\CreateTeacher::route('/create'),
-            'edit'   => Pages\EditTeacher::route('/{record}/edit'),
+            'index'  => Pages\ListGalleries::route('/'),
+            'create' => Pages\CreateGallery::route('/create'),
+            'edit'   => Pages\EditGallery::route('/{record}/edit'),
         ];
     }
 }

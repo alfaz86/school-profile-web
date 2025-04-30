@@ -3,6 +3,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -13,7 +15,8 @@ use Filament\Tables\Table;
 
 class UserResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model       = User::class;
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
@@ -23,32 +26,42 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->label('Full Name')
-                    ->placeholder('e.g. John Doe')
-                    ->required(),
+                Section::make('Informasi Akun')
+                    ->description('Silakan isi data akun pengguna.')
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label('Nama Lengkap')
+                                    ->placeholder('Contoh: John Doe')
+                                    ->required(),
 
-                TextInput::make('email')
-                    ->label('Email Address')
-                    ->placeholder('e.g. john.doe@example.com')
-                    ->email()
-                    ->required()
-                    ->unique(User::class, 'email', ignoreRecord: true),
+                                TextInput::make('email')
+                                    ->label('Alamat Email')
+                                    ->placeholder('Contoh: john.doe@example.com')
+                                    ->email()
+                                    ->required()
+                                    ->unique(User::class, 'email', ignoreRecord: true),
+                            ]),
 
-                TextInput::make('password')
-                    ->label('Password')
-                    ->placeholder('Minimum 8 characters')
-                    ->password()
-                    ->required()
-                    ->minLength(8),
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('password')
+                                    ->label('Kata Sandi')
+                                    ->placeholder('Minimal 8 karakter')
+                                    ->password()
+                                    ->required()
+                                    ->minLength(8),
 
-                Select::make('role')
-                    ->label('User Role')
-                    ->placeholder('Select a role')
-                    ->options([
-                        'admin' => 'Admin',
-                    ])
-                    ->required(),
+                                Select::make('role')
+                                    ->label('Peran Pengguna')
+                                    ->placeholder('Pilih peran')
+                                    ->options([
+                                        'admin' => 'Admin',
+                                    ])
+                                    ->required(),
+                            ]),
+                    ]),
             ]);
     }
 
