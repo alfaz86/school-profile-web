@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Models;
 
 use App\Models\Image;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Gallery extends Model
 {
@@ -16,7 +15,6 @@ class Gallery extends Model
         'slug',
         'description',
     ];
-
 
     protected static function boot()
     {
@@ -32,7 +30,7 @@ class Gallery extends Model
             if ($gallery->images) {
                 foreach ($gallery->images as $image) {
                     // Hapus file dari storage
-                    Storage::disk('public')->delete($image->file_path);
+                    Storage::disk('')->delete($image->file_path);
                     // Hapus record gambar dari DB
                     $image->delete();
                 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,13 +12,7 @@ Route::get('/profil', function () {
     return view('profil', ['title' => 'Profile SD Negeri Bojongloa 1']);
 })->name('profil');
 
-Route::get('/guru', function () {
-    return view('guru', ['title' => 'Data Guru']);
-})->name('guru');
-
-// Route::get('/siswa', function () {
-//     return view('siswa', ['title' => 'Data Siswa']);
-// })->name('siswa');
+Route::get('/guru', [TeacherController::class, 'index'])->name('guru');
 
 Route::get('/siswa', [StudentController::class, 'index'])->name('siswa');
 

@@ -1,15 +1,12 @@
 <?php
-
 namespace App\Filament\Resources\GalleryResource\Pages;
 
-use App\Models\Image;
-use Filament\Actions;
-use App\Models\Teacher;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
-use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\GalleryResource;
 use App\Models\Gallery;
+use App\Models\Image;
+use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CreateGallery extends CreateRecord
 {
@@ -18,24 +15,32 @@ class CreateGallery extends CreateRecord
     protected function beforeCreate(): void
     {
         $this->data['slug'] = Str::slug($this->data['title']) . '-' . Str::random(6);
+        // Hapus dd() agar eksekusi bisa lanjut ke afterCreate
+        dd($this->data['images'] ?? null);
     }
 
     protected function afterCreate(): void
     {
-        // Save image after teacher is created
-        $imageData = session('image_data');
+        $images = $this->data['images'] ?? [];
 
-        if ($imageData) {
-            $image                 = new Image();
-            $image->file_data      = $imageData['file_data'];
-            $image->file_name      = $imageData['file_name'];
-            $image->file_path      = $imageData['file_path'];
-            $image->imageable_id   = $this->record->id;
-            $image->imageable_type = Gallery::class;
-            $image->save();
+        foreach ($images as $entry) {
+            $fileData = $entry['file_data'] ?? null;
 
-            // Clear session data
-            session()->forget('image_data');
+            if (is_array($fileData)) {
+                foreach ($fileData as $filename) {
+                    $storagePath = $filename;
+
+                    if (Storage::disk('public')->exists($storagePath)) {
+                        $image                 = new Image();
+                        $image->file_name      = $filename;
+                        $image->file_data      = Storage::disk('public')->get($storagePath);
+                        $image->file_path      = $filename;
+                        $image->imageable_id   = $this->record->id;
+                        $image->imageable_type = Gallery::class;
+                        $image->save();
+                    }
+                }
+            }
         }
     }
 
