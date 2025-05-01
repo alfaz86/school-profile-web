@@ -9,8 +9,6 @@ class TeacherController extends Controller
     {
         $teachers = Teacher::with('image')->get();
 
-        // dd($teachers);
-
         return view('guru', [
             'title'    => 'Data Guru',
             'teachers' => $teachers,

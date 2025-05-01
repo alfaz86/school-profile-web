@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GalleryResource\Pages;
@@ -156,10 +157,10 @@ class GalleryResource extends Resource
                     ->searchable()
                     ->limit(50),
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label('Tanggal Dibuat')
                     ->dateTime(),
                 TextColumn::make('updated_at')
-                    ->label('Updated At')
+                    ->label('Tanggal Diperbarui')
                     ->dateTime(),
             ])
             ->filters([

@@ -26,14 +26,20 @@ class Gallery extends Model
             }
         });
 
+        // Event saat model Gallery akan dihapus
         static::deleting(function ($gallery) {
-            if ($gallery->images) {
-                foreach ($gallery->images as $image) {
-                    // Hapus file dari storage
-                    Storage::disk('')->delete($image->file_path);
-                    // Hapus record gambar dari DB
-                    $image->delete();
+            // Pastikan relasi images dimuat
+            $gallery->load('images');
+
+            // Hapus semua gambar terkait
+            foreach ($gallery->images as $image) {
+                // Hapus file fisik dari storage
+                if ($image->file_path && Storage::disk('public')->exists($image->file_path)) {
+                    Storage::disk('public')->delete($image->file_path);
                 }
+
+                // Hapus record gambar dari database
+                $image->delete();
             }
         });
     }

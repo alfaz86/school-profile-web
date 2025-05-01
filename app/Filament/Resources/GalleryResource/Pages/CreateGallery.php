@@ -16,7 +16,7 @@ class CreateGallery extends CreateRecord
     {
         $this->data['slug'] = Str::slug($this->data['title']) . '-' . Str::random(6);
         // Hapus dd() agar eksekusi bisa lanjut ke afterCreate
-        dd($this->data['images'] ?? null);
+        // dd($this->data['images'] ?? null);
     }
 
     protected function afterCreate(): void
