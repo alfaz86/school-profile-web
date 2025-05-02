@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center py-4">
             <!-- Logo -->
             <a href="{{ route('home') }}" @if (request()->routeIs('home')) class="active" @endif>
-                <img src="{{ asset('images/Logo Sekolah Dasar (Logo SD).png') }}" alt="Logo Sekolah Dasar"
+                <img src="{{ asset('images/elementary-school-logo.png') }}" alt="Logo Sekolah Dasar"
                     class="h-12 lg:h-16" loading="lazy">
             </a>
             <!-- Menu Navigasi untuk layar besar -->

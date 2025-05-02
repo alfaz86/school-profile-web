@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
@@ -9,7 +10,7 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = Gallery::with('images')->get();
-        // dd($galleries);
+
         return view('galeri', [
             'title'     => 'Galeri SD Negeri Bojongloa 1',
             'galleries' => $galleries,
@@ -22,7 +23,8 @@ class GalleryController extends Controller
         $gallery->load('images');
 
         return view('layouts.galeri-detail', [
-            'title'   => $gallery->title,
+            'title'   => 'Galeri SD Negeri Bojongloa 1',
+            'headline' => $gallery->headline,
             'gallery' => $gallery->images,
         ]);
     }

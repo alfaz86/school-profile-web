@@ -11,7 +11,7 @@
                     <!-- Image -->
                     <div class="w-full lg:w-1/2 xl:w-5/12">
                         <img alt="School principal giving a speech" class="w-full h-auto rounded-lg shadow-md"
-                            src="{{ asset('images/image 19-HD.png') }}" loading="lazy" />
+                            src="{{ asset('images/headmaster.png') }}" loading="lazy" />
                     </div>
 
                     <!-- Content -->
@@ -135,19 +135,14 @@
         <section class="py-8 px-4 md:px-8">
             <div class="container mx-auto">
                 <h2 class="text-2xl lg:text-3xl font-bold mb-4">Gallery</h2>
+                @php
+                    $galleryImages = \App\Models\Gallery::latest()->take(6)->get();
+                @endphp
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 place-items-center">
-                    <img alt="Pramuka" class="w-full aspect-square rounded-md mx-3"
-                        src="{{ asset('images/gallery/pramuka/IMG-20241017-WA0103.png') }}" />
-                    <img alt="ANBK" class="w-full aspect-square rounded-md mx-3"
-                        src="{{ asset('images/gallery/ANBK/IMG-20241017-WA0100.png') }}" />
-                    <img alt="Shalat Dhuha" class="w-full aspect-square rounded-md mx-3"
-                        src="{{ asset('images/gallery/shalat/IMG-20241017-WA0105.png') }}" />
-                    <img alt="Pembelajaran Siswa" class="w-full aspect-square rounded-md mx-3"
-                        src="{{ asset('images/gallery/pembelajaran/IMG-20241017-WA0130.png') }}" />
-                    <img alt="Senam" class="w-full aspect-square rounded-md mx-3"
-                        src="{{ asset('images/gallery/senam/IMG-20241017-WA0140.png') }}" />
-                    <img alt="Upacara" class="w-full aspect-square rounded-md mx-3"
-                        src="{{ asset('images/gallery/upacara/IMG-20241017-WA0109.png') }}" />
+                    @foreach ($galleryImages as $item)
+                        <img alt="Pramuka" class="w-full aspect-square rounded-md mx-3"
+                        src="data:image/png;base64,{{ base64_encode($item->images->first()->file_data) }}" />
+                    @endforeach
                 </div>
                 <div class="flex justify-center">
                     <a href="{{ route('galeri') }}"

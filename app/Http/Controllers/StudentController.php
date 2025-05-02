@@ -9,7 +9,6 @@ class StudentController extends Controller
     {
         $students = Student::all();
 
-        // dd($students);
         return view('siswa', [
             'title'    => 'Data Siswa',
             'students' => $students,
