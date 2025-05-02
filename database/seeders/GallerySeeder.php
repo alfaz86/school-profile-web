@@ -63,11 +63,15 @@ class GallerySeeder extends Seeder
             ]);
 
             $imageUrl = 'https://picsum.photos/seed/' . $slug . $i . '/300/200';
-
+            $context = stream_context_create([
+                'http' => [
+                    'header' => "User-Agent: LaravelSeeder\r\n"
+                ]
+            ]);
             Image::create([
                 'imageable_id' => $galleryModel->id,
                 'imageable_type' => Gallery::class,
-                'file_data' => file_get_contents($imageUrl),
+                'file_data' => file_get_contents($imageUrl, false, $context),
                 'file_path' => $imageUrl,
                 'file_name' => $imageUrl,
             ]);
