@@ -17,12 +17,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     {{-- my-css --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- jQuery & DataTables CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
 </head>
 
 <body>
     <div class="relative">
         <img alt="School building with a flagpole and trees in the background" class="w-full h-96 object-cover"
-            height="500" src="{{ asset('images/23be26dd73ac194be56fa8ac893771b6.jpeg') }}" />
+            height="500" src="{{ asset('images/hero-image.jpeg') }}" />
         <div>
             @if (!request()->routeIs('home'))
                 <div class="absolute inset-0 flex items-center justify-center">
@@ -57,7 +62,14 @@
     <div class="relative px-14 pt-8 bg-gray-100">
         @include('components.footer')
     </div>
+    
+    <!-- jQuery & DataTables -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
     <script src="{{ asset('js/scripts.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

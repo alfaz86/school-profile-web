@@ -6,7 +6,7 @@
             <!-- First Item -->
             <div class="text-center relative">
                 <img alt="Perlombaan FTBI" class="rounded-lg w-931px h-479px"
-                    src="{{ asset('images/prestasi/IMG-20241019-WA0047.png') }}" width="800" />
+                    src="{{ asset('images/prestasi/prestasi-3.png') }}" width="800" />
                 <div class="absolute bottom-0 left-0 right-0 text-white py-2 rounded-b-lg"
                     style="background-color: rgba(14, 165, 233, 0.75);">
                     <h2 class="text-lg lg:text-2xl font-semibold">
@@ -17,7 +17,7 @@
             <!-- Second Item -->
             <div class="text-center relative">
                 <img alt="Pembagian hadiah maulid nabi muhammad SAW" class="rounded-lg w-931px h-479px"
-                    src="{{ asset('images/prestasi/IMG-20241017-WA0117.png') }}" width="800" />
+                    src="{{ asset('images/prestasi/prestasi-2.png') }}" width="800" />
                 <div class="absolute bottom-0 left-0 right-0 text-white py-2 rounded-b-lg"
                     style="background-color: rgba(14, 165, 233, 0.75);">
                     <h2 class="text-lg lg:text-2xl font-semibold">
@@ -28,7 +28,7 @@
             <!-- Third Item -->
             <div class="text-center relative">
                 <img alt="Perlombaan Pramuka" class="rounded-lg w-931px h-479px"
-                    src="{{ asset('images/prestasi/IMG-20241017-WA0113.png') }}" width="800" />
+                    src="{{ asset('images/prestasi/prestasi-1.png') }}" width="800" />
                 <div class="absolute bottom-0 left-0 right-0 text-white py-2 rounded-b-lg"
                     style="background-color: rgba(14, 165, 233, 0.75);">
                     <h2 class="text-lg lg:text-2xl font-semibold">

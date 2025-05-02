@@ -2,7 +2,7 @@
 @section('content')
     <main class="p-8 md:p-12">
         <h1 class="text-center text-2xl lg:text-3xl font-bold">
-            {{ $title }}
+            {{ $headline }}
         </h1>
     </main>
     @foreach ($gallery as $item)

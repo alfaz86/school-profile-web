@@ -2,7 +2,7 @@
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-start">
         <!-- Bagian Alamat dan Logo -->
         <div class="flex flex-col items-start mb-4 md:mb-0">
-            <img src="{{ asset('images/Logo Sekolah Dasar (Logo SD).png') }}" alt="Logo Sekolah Dasar"
+            <img src="{{ asset('images/elementary-school-logo.png') }}" alt="Logo Sekolah Dasar"
                 class="h-12 md:h-14 lg:h-16">
             <div class="text-xs text-left font-piazzolla font-bold">
                 <p>Dusun Citaman RT/RW 015/007, Desa Bojongloa,</p>
