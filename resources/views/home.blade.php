@@ -140,8 +140,13 @@
                 @endphp
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 place-items-center">
                     @foreach ($galleryImages as $item)
-                        <img alt="Pramuka" class="w-full aspect-square rounded-md mx-3"
-                        src="data:image/png;base64,{{ base64_encode($item->images->first()->file_data) }}" />
+                        <img alt="{{ $item->title }}" class="w-full aspect-square rounded-md mx-3"
+                            @if ($item->images->first())
+                                src="data:image/png;base64,{{ base64_encode($item->images->first()->file_data) }}"
+                            @else
+                                src="{{ asset('images/default-image.png') }}"
+                            @endif
+                        />
                     @endforeach
                 </div>
                 <div class="flex justify-center">
