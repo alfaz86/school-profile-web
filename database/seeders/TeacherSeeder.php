@@ -62,26 +62,10 @@ class TeacherSeeder extends Seeder
                 'role'     => 'teacher',
             ]);
 
-            $teacher = Teacher::create([
+            Teacher::create([
                 'name'     => $teacher['name'],
                 'position' => $teacher['position'],
                 'user_id'  => $user->id,
-            ]);
-
-            $context = stream_context_create([
-                'http' => [
-                    'header' => "User-Agent: LaravelSeeder\r\n"
-                ]
-            ]);
-            $randomInt = random_int(1, 99);
-            $randomGender = $randomInt % 2 == 0 ? 'men' : 'women';
-            $randomImage = 'https://randomuser.me/api/portraits/' . $randomGender . '/' . $randomInt . '.jpg';
-            Image::create([
-                'file_data' => file_get_contents($randomImage, false, $context),
-                'file_name' => strtolower(str_replace(' ', '-', $teacher['name'])) . '.jpg',
-                'file_path' => $randomImage,
-                'imageable_id' => $teacher->id,
-                'imageable_type' => Teacher::class,
             ]);
         }
     }
