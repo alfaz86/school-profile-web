@@ -55,25 +55,11 @@ class GallerySeeder extends Seeder
 
         foreach ($gallery as $i => $g) {
             $slug = strtolower(str_replace(' ', '-', $g['title']));
-            $galleryModel = Gallery::create([
+            Gallery::create([
                 'title' => $g['title'],
                 'headline' => $g['headline'],
                 'slug' => $slug,
                 'description' => $g['description'],
-            ]);
-
-            $imageUrl = 'https://picsum.photos/seed/' . $slug . $i . '/300/200';
-            $context = stream_context_create([
-                'http' => [
-                    'header' => "User-Agent: LaravelSeeder\r\n"
-                ]
-            ]);
-            Image::create([
-                'imageable_id' => $galleryModel->id,
-                'imageable_type' => Gallery::class,
-                'file_data' => file_get_contents($imageUrl, false, $context),
-                'file_path' => $imageUrl,
-                'file_name' => $imageUrl,
             ]);
         }
     }
