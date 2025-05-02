@@ -125,7 +125,7 @@ class GalleryResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('images.file_data')
-                    ->label('Foto Guru')
+                    ->label('Foto')
                     ->getStateUsing(function ($record) {
                         // Ambil data binary dari relasi images
                         $fileData = $record?->images?->sortByDesc('created_at')->first()?->file_data;
