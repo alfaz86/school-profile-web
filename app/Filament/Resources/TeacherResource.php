@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TeacherResource\Pages;
@@ -106,7 +107,7 @@ class TeacherResource extends Resource
                         // Ubah menjadi base64
                         $base64 = base64_encode($fileData);
 
-                                              // Tentukan mime type. Misalnya: image/jpeg
+                        // Tentukan mime type. Misalnya: image/jpeg
                         $mime = 'image/jpeg'; // atau image/png, sesuaikan dengan file asli
 
                         return "data:{$mime};base64,{$base64}";
@@ -124,11 +125,11 @@ class TeacherResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label('Tanggal Bergabung')
                     ->dateTime(),
 
                 TextColumn::make('updated_at')
-                    ->label('Updated At')
+                    ->label('Terakhir Diperbarui')
                     ->dateTime(),
             ])
             ->filters([

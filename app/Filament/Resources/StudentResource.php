@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\StudentResource\Pages;
@@ -109,11 +110,11 @@ class StudentResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label('Tanggal Bergabung')
                     ->dateTime(),
 
                 TextColumn::make('updated_at')
-                    ->label('Updated At')
+                    ->label('Terakhir Diperbarui')
                     ->dateTime(),
             ])
             ->filters([

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
@@ -83,11 +84,11 @@ class UserResource extends Resource
                     ->formatStateUsing(fn($state) => ucfirst($state)),
 
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label('Tanggal Dibuat')
                     ->dateTime(),
 
                 TextColumn::make('updated_at')
-                    ->label('Updated At')
+                    ->label('Terakhir Diperbarui')
                     ->dateTime(),
             ])
             ->filters([

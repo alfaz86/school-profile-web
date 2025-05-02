@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
 {
@@ -15,6 +16,17 @@ class Image extends Model
         'imageable_id',
         'imageable_type',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($image) {
+            if ($image->file_path && Storage::disk('public')->exists($image->file_path)) {
+                Storage::disk('public')->delete($image->file_path);
+            }
+        });
+    }
 
     public function imageable()
     {

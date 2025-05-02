@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Models;
 
 use App\Models\Image;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Gallery extends Model
 {
@@ -17,7 +16,6 @@ class Gallery extends Model
         'description',
     ];
 
-
     protected static function boot()
     {
         parent::boot();
@@ -28,14 +26,20 @@ class Gallery extends Model
             }
         });
 
+        // Event saat model Gallery akan dihapus
         static::deleting(function ($gallery) {
-            if ($gallery->images) {
-                foreach ($gallery->images as $image) {
-                    // Hapus file dari storage
+            // Pastikan relasi images dimuat
+            $gallery->load('images');
+
+            // Hapus semua gambar terkait
+            foreach ($gallery->images as $image) {
+                // Hapus file fisik dari storage
+                if ($image->file_path && Storage::disk('public')->exists($image->file_path)) {
                     Storage::disk('public')->delete($image->file_path);
-                    // Hapus record gambar dari DB
-                    $image->delete();
                 }
+
+                // Hapus record gambar dari database
+                $image->delete();
             }
         });
     }

@@ -1,20 +1,23 @@
 <?php
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GalleryResource\Pages;
 use App\Models\Gallery;
 use App\Models\Image;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\View;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\HtmlString;
 
 class GalleryResource extends Resource
 {
@@ -39,59 +42,81 @@ class GalleryResource extends Resource
         return $form
             ->schema([
                 Section::make('Informasi Galeri')
-                    ->description('Masukkan detail galeri foto')
+                    ->description('Masukkan detail galeri foto.')
                     ->icon('heroicon-o-photo')
                     ->schema([
-                        TextInput::make('title')
-                            ->label('Judul Galeri')
-                            ->placeholder('Contoh: Guru, Siswa, Pramuka')
-                            ->required()
-                            ->columnSpan(1),
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('title')
+                                    ->label('Judul Galeri')
+                                    ->placeholder('Contoh: Guru, Siswa, Pramuka')
+                                    ->required()
+                                    ->reactive()
+                                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                                        if (empty($get('headline'))) {
+                                            $set('headline', $state);
+                                        }
+                                    }),
 
-                        TextInput::make('headline')
-                            ->label('Headline')
-                            ->placeholder('Contoh: Kegiatan Pramuka, Kegiatan Belajar Mengajar')
-                            ->required()
-                            ->columnSpan(1),
+                                TextInput::make('headline')
+                                    ->label('Headline')
+                                    ->placeholder('Contoh: Kegiatan Pramuka, Kegiatan Belajar Mengajar')
+                                    ->required(),
+                            ]),
 
-                        TextInput::make('description')
-                            ->label('Deskripsi')
-                            ->placeholder('Contoh: Beberapa Foto Guru dan Siswa')
-                            ->columnSpanFull(),
+                        Grid::make(1)
+                            ->schema([
+                                TextInput::make('description')
+                                    ->label('Deskripsi')
+                                    ->placeholder('Contoh: Beberapa Foto Guru dan Siswa'),
+                            ]),
                     ])
-                    ->columns(2),
+                    ->columns(1),
 
                 Section::make('Foto Galeri')
-                    ->description('Unggah dan lihat foto galeri')
+                    ->description('Unggah dan lihat foto galeri.')
                     ->icon('heroicon-o-camera')
                     ->schema([
-                        FileUpload::make('images.file_data')
-                            ->label('Upload Foto Baru')
-                            ->preserveFilenames()
-                            ->image()
-                            ->columnSpanFull()
-                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
-                            ->rules(['image', 'mimes:jpeg,png,jpg', 'max:5120'])
-                            ->saveUploadedFileUsing(function ($file, $get, $set) {
-                                $path = Storage::disk('public')->putFile('', $file);
+                        Grid::make(1)
+                            ->schema([
+                                Repeater::make('images')
+                                    ->label('Daftar Foto')
+                                    ->schema([
+                                        FileUpload::make('file_data')
+                                            ->label('Upload Foto Baru')
+                                            ->preserveFilenames()
+                                            ->image()
+                                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
+                                            ->rules(['image', 'mimes:jpeg,png,jpg', 'max:5120'])
+                                            ->visible(fn($state, $get) => $get('image_id') === null),
 
-                                session()->flash('image_data', [
-                                    'file_data' => file_get_contents($file->getRealPath()),
-                                    'file_name' => $file->getClientOriginalName(),
-                                    'file_path' => $path,
-                                ]);
+                                        Placeholder::make('')
+                                            ->content(function ($state, $get) {
+                                                $imageId = $get('image_id');
+                                                $image   = Image::where('id', $imageId)->first();
 
-                                return $path;
-                            }),
-                        // dd($form->getRecord()->images),
-                        View::make('livewire.components.image-preview')
-                            ->hidden(fn($record) => ! $record || $record->images->isEmpty())
-                            ->viewData([
-                                'fileData' => $form->getRecord()?->images->first()?->file_data,
-                                'fileName' => $form->getRecord()?->images->first()?->file_name,
-                            ])
-                            ->columnSpanFull(),
-                    ]),
+                                                return new HtmlString(
+                                                    view('livewire.components.image-preview', [
+                                                        'imageId'  => $imageId,
+                                                        'fileData' => $image->file_data ?? null,
+                                                        'fileName' => $image->file_name ?? null,
+                                                    ])->render()
+                                                );
+                                            })
+                                            ->visible(function ($livewire, $state, $get) {
+                                                if ($livewire instanceof \Filament\Resources\Pages\EditRecord) {
+                                                    return $get('image_id') !== null;
+                                                }
+                                                return false;
+                                            }),
+                                    ])
+                                    ->addActionLabel('Tambah Foto')
+                                    ->collapsible()
+                                    ->defaultItems(0)
+                                    ->columns(1),
+                            ]),
+                    ])
+                    ->columns(1),
             ]);
     }
 
@@ -103,17 +128,14 @@ class GalleryResource extends Resource
                     ->label('Foto Guru')
                     ->getStateUsing(function ($record) {
                         // Ambil data binary dari relasi images
-                        $fileData = optional($record->images->first())->file_data;
+                        $fileData = $record?->images?->sortByDesc('created_at')->first()?->file_data;
 
                         if (! $fileData) {
                             return null;
                         }
-
                         // Ubah menjadi base64
                         $base64 = base64_encode($fileData);
-
-                                               // Tentukan mime type. Misalnya: images/jpeg
-                        $mime = 'images/jpeg'; // atau images/png, sesuaikan dengan file asli
+                        $mime   = 'images/jpeg'; // atau images/png, sesuaikan dengan file asli
 
                         return "data:{$mime};base64,{$base64}";
                     })
@@ -135,10 +157,10 @@ class GalleryResource extends Resource
                     ->searchable()
                     ->limit(50),
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label('Tanggal Dibuat')
                     ->dateTime(),
                 TextColumn::make('updated_at')
-                    ->label('Updated At')
+                    ->label('Tanggal Diperbarui')
                     ->dateTime(),
             ])
             ->filters([

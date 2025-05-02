@@ -7,109 +7,25 @@
             <div class="border-t-2 border-gray-300 my-4 py-4 text-center">
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/komunitas-belajar/IMG-20241017-WA0097.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">Guru</h2>
-                        <p class="text-gray-500">
-                            Beberapa Foto Guru - Guru SDN Bojongloa 1</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('komunitas-belajar') }}">Lihat Foto</a>
-                    </div>
-                </div>
+                @foreach ($galleries as $gallery)
+                    <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center mb-6">
+                        @php
+                            $firstImage = $gallery->images->first();
+                        @endphp
 
-                <!-- Card 2 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/shalat/IMG-20241017-WA0107.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">Shalat Dhuha</h2>
-                        <p class="text-gray-500">
-                            Beberapa foto sedang melaksanakan kegiatan shalat dhuha</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('shalat-dhuha') }}">Lihat Foto</a>
-                    </div>
-                </div>
+                        <!-- Tampilkan gambar (hanya dari file_data) -->
+                        <img alt="{{ $gallery->title }}" class="w-full lg:w-1/2 rounded-md"
+                            src="data:image/png;base64,{{ base64_encode($firstImage->file_data) }}" />
 
-                <!-- Card 3 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/upacara/IMG-20241017-WA0108.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">Upacara</h2>
-                        <p class="text-gray-500">
-                            Beberapa foto sedang melaksanakan kegiatan upacara bendera</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('upacara') }}">Lihat Foto</a>
+                        <div class="pt-4 lg:p-4 w-full lg:w-1/2">
+                            <h2 class="text-xl font-bold text-white rounded px-2 py-1"
+                                style="background-color: rgba(14, 165, 233, 0.75);">{{ $gallery->title }}</h2>
+                            <p class="text-gray-500">{{ $gallery->description }}</p>
+                            <a class="text-blue-600 hover:underline"
+                                href="{{ route('gallery.show', $gallery->slug) }}">Lihat Foto</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/pramuka/IMG-20241017-WA0103.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">Pramuka</h2>
-                        <p class="text-gray-500">
-                            Beberapa foto sedang melaksanakan upacara pramuka</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('pramuka') }}">Lihat Foto</a>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/ANBK/IMG-20241017-WA0100.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">ANBK</h2>
-                        <p class="text-gray-500">
-                            Beberapa foto sedang melaksanakan ANBK</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('anbk') }}">Lihat Foto</a>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/pembelajaran/IMG-20241017-WA0129.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">Pembelajaran</h2>
-                        <p class="text-gray-500">
-                            Beberapa foto sedang melaksanakan kegiatan pembelajaran</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('pembelajaran') }}">Lihat Foto</a>
-                    </div>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/program/IMG-20241017-WA0134.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">Program</h2>
-                        <p class="text-gray-500">
-                            Beberapa foto program bantuan</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('program') }}">Lihat Foto</a>
-                    </div>
-                </div>
-
-                <!-- Card 8 -->
-                <div class="bg-white overflow-hidden flex flex-col lg:flex-row items-center">
-                    <img alt="Komunitas Belajar" class="w-full lg:w-1/2 rounded-md"
-                        src="{{ asset('images/gallery/senam/IMG-20241017-WA0140.png') }}" />
-                    <div class="pt-4 lg:p-4 w-full lg:w-1/2">
-                        <h2 class="text-xl font-bold text-white rounded px-2 py-1"
-                            style="background-color: rgba(14, 165, 233, 0.75);">Senam</h2>
-                        <p class="text-gray-500">
-                            Beberapa foto sedang melaksanakan senam</p>
-                        <a class="text-blue-600 hover:underline" href="{{ route('senam') }}">Lihat Foto</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </main>
