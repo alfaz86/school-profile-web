@@ -15,7 +15,12 @@
 
                         <!-- Tampilkan gambar (hanya dari file_data) -->
                         <img alt="{{ $gallery->title }}" class="w-full lg:w-1/2 rounded-md"
-                            src="data:image/png;base64,{{ base64_encode($firstImage->file_data) }}" />
+                            @if ($firstImage)
+                                src="data:image/png;base64,{{ base64_encode($firstImage->file_data) }}"
+                            @else
+                                src="{{ asset('images/default-image.png') }}"
+                            @endif
+                        />
 
                         <div class="pt-4 lg:p-4 w-full lg:w-1/2">
                             <h2 class="text-xl font-bold text-white rounded px-2 py-1"
