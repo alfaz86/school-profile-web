@@ -134,7 +134,7 @@
         <!-- Gallery Section -->
         <section class="py-8 px-4 md:px-8">
             <div class="container mx-auto">
-                <h2 class="text-2xl lg:text-3xl font-bold mb-4">Gallery</h2>
+                <h2 class="text-2xl lg:text-3xl font-bold mb-4">Galeri</h2>
                 @php
                     $galleryImages = \App\Models\Gallery::latest()->take(6)->get();
                 @endphp
