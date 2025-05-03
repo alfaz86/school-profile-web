@@ -102,7 +102,7 @@ class TeacherResource extends Resource
                             })
                             ->visible(function ($record, $livewire, $state, $get) {
                                 if ($livewire instanceof \Filament\Resources\Pages\EditRecord) {
-                                    return $record->image->id !== null;
+                                    return $record?->image?->id !== null;
                                 }
                                 return false;
                             }),
