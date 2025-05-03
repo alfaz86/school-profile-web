@@ -34,9 +34,9 @@
             <h2 class="font-open-sans font-bold mb-2 text-sm md:text-base">Media Sosial</h2>
             <ul class="flex space-x-4">
                 <li>
-                    <a href="#">
+                    <a href="https://www.instagram.com/sdnbojongloa1_20233787">
                         <img src="{{ asset('images/icons/instagram_1400829.png') }}" alt="Instagram"
-                            class="h-6 w-6 p-1 border-2 border-gray-400 rounded-md items-center justify-center">
+                            class="h-7 w-7 border-2 border-gray-400 rounded-md items-center justify-center">
                     </a>
                 </li>
                 <!-- Tambahkan ikon media sosial lainnya di sini -->

@@ -26,7 +26,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/about', function () {
-    return view('about', ['title' => 'About']);
+    return view('about', ['title' => 'Tentang Kami']);
 })->name('about');
 
 // Partial Route

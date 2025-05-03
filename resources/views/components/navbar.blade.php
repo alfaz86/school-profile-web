@@ -3,8 +3,8 @@
         <div class="flex justify-between items-center py-4">
             <!-- Logo -->
             <a href="{{ route('home') }}" @if (request()->routeIs('home')) class="active" @endif>
-                <img src="{{ asset('images/elementary-school-logo.png') }}" alt="Logo Sekolah Dasar"
-                    class="h-12 lg:h-16" loading="lazy">
+                <img src="{{ asset('images/elementary-school-logo.png') }}" alt="Logo Sekolah Dasar" class="h-12 lg:h-16"
+                    loading="lazy">
             </a>
             <!-- Menu Navigasi untuk layar besar -->
             @php
@@ -14,8 +14,8 @@
                     'guru' => 'Guru',
                     'siswa' => 'Siswa',
                     'galeri' => 'Galeri',
-                    'contact' => 'Contact',
-                    'about' => 'About',
+                    'contact' => 'Kontak',
+                    'about' => 'Tentang Kami',
                 ];
             @endphp
 
