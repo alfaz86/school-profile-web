@@ -25,7 +25,7 @@ class GalleryController extends Controller
         return view('layouts.galeri-detail', [
             'title'   => 'Galeri SD Negeri Bojongloa 1',
             'headline' => $gallery->headline,
-            'gallery' => $gallery->images,
+            'images' => $gallery->images,
         ]);
     }
 }

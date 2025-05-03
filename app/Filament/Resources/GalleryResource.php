@@ -97,9 +97,11 @@ class GalleryResource extends Resource
 
                                                 return new HtmlString(
                                                     view('livewire.components.image-preview', [
-                                                        'imageId'  => $imageId,
-                                                        'fileData' => $image->file_data ?? null,
                                                         'fileName' => $image->file_name ?? null,
+                                                        'imageUrl' => $imageId ? route('image.stream', [
+                                                            'id' => $imageId,
+                                                            'v' => $image->updated_at->timestamp
+                                                        ]) : null,
                                                     ])->render()
                                                 );
                                             })
@@ -127,17 +129,14 @@ class GalleryResource extends Resource
                 ImageColumn::make('images.file_data')
                     ->label('Foto')
                     ->getStateUsing(function ($record) {
-                        // Ambil data binary dari relasi images
-                        $fileData = $record?->images?->sortByDesc('created_at')->first()?->file_data;
-
-                        if (! $fileData) {
+                        $image = $record?->images?->sortByDesc('created_at')->first();
+                        if (! $image) {
                             return null;
                         }
-                        // Ubah menjadi base64
-                        $base64 = base64_encode($fileData);
-                        $mime   = 'images/jpeg'; // atau images/png, sesuaikan dengan file asli
-
-                        return "data:{$mime};base64,{$base64}";
+                        return route('image.stream', [
+                            'id' => $image->id,
+                            'v' => $image->updated_at->timestamp
+                        ]);
                     })
                     ->size(50),
 

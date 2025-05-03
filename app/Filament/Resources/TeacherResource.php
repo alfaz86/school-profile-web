@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Teacher;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\View;
@@ -17,6 +18,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\HtmlString;
 
 class TeacherResource extends Resource
 {
@@ -80,12 +82,30 @@ class TeacherResource extends Resource
                                 return $path;
                             }),
 
-                        View::make('livewire.components.image-preview')
-                            ->hidden(fn($record) => ! $record)
-                            ->viewData([
-                                'fileData' => $form->getRecord()?->image?->file_data ?? null,
-                                'fileName' => $form->getRecord()?->image?->file_name ?? null,
-                            ]),
+                        Placeholder::make('')
+                            ->content(function ($record, $state, $get) {
+                                $imageId = $record->image->id ?? $get('image_id');
+                                if ($imageId === null) {
+                                    return null;
+                                }
+                                $image   = Image::where('id', $imageId)->first();
+
+                                return new HtmlString(
+                                    view('livewire.components.image-preview', [
+                                        'fileName' => $image->file_name ?? null,
+                                        'imageUrl' => $imageId ? route('image.stream', [
+                                            'id' => $imageId,
+                                            'v' => $image->updated_at->timestamp
+                                        ]) : null,
+                                    ])->render()
+                                );
+                            })
+                            ->visible(function ($record, $livewire, $state, $get) {
+                                if ($livewire instanceof \Filament\Resources\Pages\EditRecord) {
+                                    return $record->image->id !== null;
+                                }
+                                return false;
+                            }),
                     ]),
             ]);
     }
@@ -97,20 +117,14 @@ class TeacherResource extends Resource
                 ImageColumn::make('image.file_data')
                     ->label('Foto Guru')
                     ->getStateUsing(function ($record) {
-                        // Ambil data binary dari relasi image
-                        $fileData = optional($record->image)->file_data;
-
-                        if (! $fileData) {
+                        $image = $record->image;
+                        if (! $image) {
                             return null;
                         }
-
-                        // Ubah menjadi base64
-                        $base64 = base64_encode($fileData);
-
-                        // Tentukan mime type. Misalnya: image/jpeg
-                        $mime = 'image/jpeg'; // atau image/png, sesuaikan dengan file asli
-
-                        return "data:{$mime};base64,{$base64}";
+                        return route('image.stream', [
+                            'id' => $image->id,
+                            'v' => $image->updated_at->timestamp
+                        ]);
                     })
                     ->size(50),
 
