@@ -5,6 +5,7 @@
     <section class="pt-12 pb-10 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center mb-12">
+                <h2 class="text-xl md:text-2xl font-bold text-black mb-4">Kontak Kami</h2>
                 <p class="text-md md:text-lg text-gray-700 font-semibold">
                     Silakan hubungi kami untuk pertanyaan umum, kerja sama,
                     atau informasi lainnya mengenai <br class="hidden md:block" /> SDN Bojongloa 1.
