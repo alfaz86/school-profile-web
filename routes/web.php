@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,6 @@ Route::get('/profil/visi-misi', function () {
 Route::get('/profil/prestasi', function () {
     return view('partials.prestasi', ['title' => 'Prestasi Siswa']);
 })->name('prestasi');
+
+Route::get('/image/{id}', [ImageController::class, 'streamImage'])
+    ->name('image.stream');

@@ -5,11 +5,14 @@
             {{ $headline }}
         </h1>
     </main>
-    @foreach ($gallery as $item)
+    @foreach ($images as $item)
         <section class="pb-6">
             <div class="container mx-auto px-10 md:px-12">
                 <div class="flex justify-center">
-                    <img src="data:image/png;base64,{{ base64_encode($item->file_data) }}" alt="Komunitas Belajar"
+                    <img src="{{ route('image.stream', [
+                            'id' => $item->id,
+                            'v' => $item->updated_at->timestamp
+                        ]) }}" alt="Komunitas Belajar"
                         class="w-931px h-479px rounded-md" loading="lazy" decoding="async">
                 </div>
             </div>

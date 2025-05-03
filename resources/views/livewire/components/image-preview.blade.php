@@ -1,30 +1,4 @@
-@if ($fileData && $fileName)
-    @php
-        // Validate and prepare data
-        $fileData = is_string($fileData) ? $fileData : '';
-        $fileName = is_string($fileName) ? $fileName : '';
-
-        // Detect MIME type from file signature (more reliable than extension)
-        $mime = 'image/jpeg'; // default
-        $signature = substr($fileData, 0, 4);
-
-        if (str_starts_with($signature, "\xFF\xD8\xFF")) {
-            $mime = 'image/jpeg';
-        } elseif (str_starts_with($signature, "\x89PNG")) {
-            $mime = 'image/png';
-        } elseif (str_starts_with($signature, 'GIF8')) {
-            $mime = 'image/gif';
-        } elseif (str_starts_with($signature, "\x00\x00\x01\x00")) {
-            $mime = 'image/x-icon';
-        } elseif (str_starts_with($signature, 'RIFF') && substr($fileData, 8, 4) === 'WEBP') {
-            $mime = 'image/webp';
-        }
-
-        // Create base64 URL
-        $base64 = base64_encode($fileData);
-        $imageUrl = "data:{$mime};base64,{$base64}";
-    @endphp
-
+@if ($imageUrl && $fileName)
     <div class="fi-fo-field-wrp">
         <div class="space-y-2">
             <label class="fi-fo-field-wrp-label inline-flex items-center gap-x-3">

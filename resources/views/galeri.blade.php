@@ -16,7 +16,10 @@
                         <!-- Tampilkan gambar (hanya dari file_data) -->
                         <img alt="{{ $gallery->title }}" class="w-full lg:w-1/2 rounded-md"
                             @if ($firstImage)
-                                src="data:image/png;base64,{{ base64_encode($firstImage->file_data) }}"
+                                src="{{ route('image.stream', [
+                                    'id' => $firstImage->id,
+                                    'v' => $firstImage->updated_at->timestamp
+                                ]) }}"
                             @else
                                 src="{{ asset('images/default-image.png') }}"
                             @endif

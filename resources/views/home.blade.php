@@ -140,13 +140,19 @@
                 @endphp
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 place-items-center">
                     @foreach ($galleryImages as $item)
-                        <img alt="{{ $item->title }}" class="w-full aspect-square rounded-md mx-3"
-                            @if ($item->images->first())
-                                src="data:image/png;base64,{{ base64_encode($item->images->first()->file_data) }}"
-                            @else
-                                src="{{ asset('images/default-image.png') }}"
-                            @endif
-                        />
+                        @php
+                            $image = $item->images->first();
+                            $imageUrl = $image
+                                ? route('image.stream', [
+                                    'id' => $image->id,
+                                    'v' => $image->updated_at->timestamp
+                                ])
+                                : asset('images/default-image.png');
+                        @endphp
+
+                        <img alt="{{ $item->title }}"
+                            class="w-full aspect-square rounded-md mx-3"
+                            src="{{ $imageUrl }}" />
                     @endforeach
                 </div>
                 <div class="flex justify-center">
