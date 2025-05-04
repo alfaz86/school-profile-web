@@ -22,10 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-.font-Piazzolla {
-    font-family: "Piazzolla";
-}
-
 h1,
 h2,
 h3 {
@@ -85,4 +81,33 @@ nav.bg-transparent {
 
 #sidebar {
     background-color: rgba(212, 212, 212, 0.75);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Piazzolla:wght@700&family=Open+Sans:wght@400;700&display=swap");
+
+.font-piazzolla {
+    font-family: "Piazzolla", serif;
+}
+
+.font-open-sans {
+    font-family: "Open Sans", sans-serif;
+}
+
+.footer-link {
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #3b82f6;
+    transform: translateX(5px);
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.1)
+    );
 }
