@@ -40,17 +40,17 @@
                     <h1 class="text-base md:text-lg lg:text-2xl font-bold">
                         MOTTO
                     </h1>
-                    <h2 class="text-lg md:text-xl lg:text-3xl mt-2 font-bold font-Piazzolla">
+                    <h2 class="text-lg md:text-xl lg:text-3xl mt-2 font-bold font-piazzolla">
                         SD Negeri Bojongloa 1
                     </h2>
-                    <p class="text-lg md:text-xl lg:text-3xl mt-2 font-bold font-Piazzolla">
+                    <p class="text-lg md:text-xl lg:text-3xl mt-2 font-bold font-piazzolla">
                         Ilmu adalah cahaya yang menerangi
                     </p>
-                    <p class="text-lg md:text-xl lg:text-3xl mt-2 font-bold font-Piazzolla">
+                    <p class="text-lg md:text-xl lg:text-3xl mt-2 font-bold font-piazzolla">
                         perjalananmu menuju masa depan
                     </p>
                     <button onclick="window.location.href='{{ route('contact') }}'"
-                        class="mt-4 px-8 md:px-12 py-2 font-bold bg-blue-500 text-xs lg:text-sm text-white rounded">
+                        class="mt-4 px-8 md:px-12 py-2 font-bold bg-blue-500 hover:bg-blue-300 transition-colors text-xs lg:text-sm text-white rounded">
                         Contact
                     </button>
                 </div>
