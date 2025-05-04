@@ -33,7 +33,7 @@
                 @foreach ($menus as $route => $label)
                     <li>
                         <a href="{{ route($route) }}"
-                            class="font-piazzolla font-bold text-xs lg:text-sm {{ request()->routeIs($route) || request()->is($route . '*') ? 'text-white' : '' }}">
+                            class="font-piazzolla font-black text-xs lg:text-sm {{ request()->routeIs($route) || request()->is($route . '*') ? 'text-white' : '' }}">
                             {{ $label }}
                         </a>
                     </li>
