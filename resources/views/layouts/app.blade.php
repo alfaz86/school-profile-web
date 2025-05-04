@@ -59,10 +59,10 @@
     </div>
     @include('components.navbar')
     @yield('content')
-    <div class="relative px-14 pt-8 bg-gray-100">
+    <div class="relative p-8 bg-gray-100">
         @include('components.footer')
     </div>
-    
+
     <!-- jQuery & DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>

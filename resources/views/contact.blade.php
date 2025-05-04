@@ -4,7 +4,7 @@
     <!-- Contact Form -->
     <section class="pt-12 pb-10 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center mb-12">
+            <div class="max-w-4xl mx-auto text-center mb-12" id="contact">
                 <h2 class="text-xl md:text-2xl font-bold text-black mb-4">Kontak Kami</h2>
                 <p class="text-md md:text-lg text-gray-700 font-semibold">
                     Silakan hubungi kami untuk pertanyaan umum, kerja sama,
@@ -46,7 +46,7 @@
     {{-- Maps --}}
     <section class="pb-12 pt-8 bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-4xl mx-auto" id="gmaps">
                 <h3 class="text-2xl font-bold text-center text-black mb-8">Lokasi Sekolah</h3>
                 <div class="w-full aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
                     <iframe
