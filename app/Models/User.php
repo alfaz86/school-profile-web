@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Filament\Models\Contracts\FilamentUser;
