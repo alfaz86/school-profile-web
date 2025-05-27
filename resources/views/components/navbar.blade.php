@@ -29,15 +29,22 @@
             </button>
 
             <!-- Menu untuk desktop -->
-            <ul id="burger-menus" class="hidden md:flex space-x-6">
+            <ul id="burger-menus" class="hidden md:flex space-x-6 items-center">
                 @foreach ($menus as $route => $label)
                     <li>
                         <a href="{{ route($route) }}"
-                            class="font-piazzolla font-bold text-xs lg:text-sm {{ request()->routeIs($route) || request()->is($route . '*') ? 'text-white' : '' }}">
+                            class="font-piazzolla font-black text-xs lg:text-sm {{ request()->routeIs($route) || request()->is($route . '*') ? 'text-white' : '' }}">
                             {{ $label }}
                         </a>
                     </li>
                 @endforeach
+                <!-- Tombol Login untuk desktop -->
+                <li>
+                    <a href="{{ route('filament.admin.auth.login') }}"
+                        class="ml-4 text-black font-bold font-piazzolla border border-black hover:border-white/50 backdrop-blur-md bg-white/10 hover:bg-white/20 py-2 px-5 rounded-full transition-all duration-300 text-xs lg:text-sm hover:shadow-lg hover:scale-[1.02] active:scale-95">
+                        Login
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -72,6 +79,13 @@
                         </a>
                     </li>
                 @endforeach
+                <!-- Tombol Login untuk mobile -->
+                <li class="mt-4 px-1">
+                    <a href="{{ route('filament.admin.auth.login') }}"
+                        class="block w-full text-black font-piazzolla border border-black hover:border-white/50 backdrop-blur-md bg-white/10 hover:bg-white/20 font-bold py-3 px-5 rounded-full transition-all duration-300 text-center hover:shadow-lg">
+                        Login
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
