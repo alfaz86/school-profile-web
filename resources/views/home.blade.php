@@ -2,49 +2,51 @@
 @section('content')
     <main class="py-4">
         <!-- Welcome Section -->
-        <section class="bg-white pt-4 pb-8">
+        <section class="bg-white px-4 py-8 max-w-screen-xl mx-auto">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 <!-- Decorative divider -->
                 <div class="border-t-2 border-gray-300 my-4 py-4 text-center"></div>
-
-                <div class="flex flex-col md:flex-row items-center gap-8 xl:gap-12">
-                    <!-- Image -->
-                    <div class="w-full lg:w-1/2 xl:w-5/12">
-                        <img alt="School principal giving a speech" class="w-full h-auto rounded-lg shadow-md"
-                            src="{{ asset('images/headmaster.png') }}" loading="lazy" />
+                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10 lg:gap-16">
+                    <!-- Image Section - Enhanced with better styling -->
+                    <div class="md:w-1/2 xl:w-5/12 flex flex-col items-center">
+                        <div class="relative w-full max-w-xs md:max-w-sm overflow-hidden rounded-xl shadow-lg bg-gray-100">
+                            <img alt="Kepala Sekolah SD Negeri Bojongloa 1"
+                                class="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                                src="{{ asset('images/headmaster-1.jpg') }}" loading="lazy" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-lg font-semibold text-gray-800">Asep Suryana, S.Pd</p>
+                            <p class="text-sm text-gray-600">Kepala Sekolah</p>
+                        </div>
                     </div>
 
-                    <!-- Content -->
-                    <div class="w-full lg:w-1/2 xl:w-7/12">
-                        <h2 class="text-2xl lg:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
-                            Sambutan Kepala Sekolah<br>
-                            <span>SD Negeri Bojongloa 1</span>
-                        </h2>
+                    <!-- Content Section -->
+                    <div class="w-full md:w-1/2 lg:w-7/12 mt-6 md:mt-0">
+                        <!-- Konten tetap sama -->
+                        <div class="mb-6">
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 leading-tight">
+                                Sambutan Kepala Sekolah
+                            </h2>
+                            <div class="w-16 h-1 bg-indigo-600 rounded-full mt-2"></div>
+                            <p class="text-base sm:text-lg text-gray-600 mt-2">SD Negeri Bojongloa 1</p>
+                        </div>
 
-                        <div class="prose prose-sm sm:prose-base lg:prose-lg max-w-none text-gray-600 text-sm lg:text-base">
-                            <p class="mb-4 sm:mb-5 font-semibold text-gray-700">
-                                Assalamualaikum Wr. Wb
+                        <div class="space-y-4 text-gray-700">
+                            <p class="text-justify leading-relaxed text-sm sm:text-base indent text-indent-8">
+                                Selamat datang di website SD Negeri Bojongloa 1 sebagai lembaga pendidikan, SD Negeri
+                                Bojongloa 1 tanggap dengan perkembangan teknologi dan informasi. Sekolah ini siap untuk
+                                berkompetisi dengan sekolah lain dalam pelayanan informasi publik. Teknologi Informasi
+                                website khususnya, menjadi sarana bagi SD Negeri Bojongloa 1 untuk memberi pelayanan
+                                informasi secara cepat dan jelas.
                             </p>
 
-                            <p class="text-indent-8 text-justify mb-2 text-sm lg:text-base">
-                                Puji syukur kita panjatkan ke hadirat Allah SWT atas berkat dan limpahan rahmat, taufik,
-                                serta
-                                hidayah-Nya kepada kita semua. Shalawat serta salam terucap kepada junjungan Nabi
-                                Muhammad SAW.
-                            </p>
-
-                            <p class="text-indent-8 text-justify mb-2 text-sm lg:text-base">
-                                Alhamdulillah, pada hari ini kita dapat menjalani aktivitas dengan keadaan sehat jasmani
-                                dan rohani;
-                                saya selaku kepala sekolah, mewakili seluruh warga SD Negeri Bojongloa 1 mengucapkan
-                                selamat datang
-                                di website seputar sekolah ini. Di website ini kami memperkenalkan guru, siswa serta
-                                lingkungan
-                                sekolah dan memperkenalkan visi misi kami salah satunya adalah membantu siswa baru
-                                beradaptasi dengan
-                                lingkungan sekolah dan sekitarnya, antara lain terhadap aspek keamanan, kebersihan dan
-                                fasilitas
-                                lain yang dapat dimanfaatkan siswa dan siswi dan menunjang kegiatan belajar mengajar.
+                            <p class="text-justify leading-relaxed text-sm sm:text-base indent text-indent-8">
+                                Dari layanan ini pula, sekolah siap menerima saran dari semua pihak yang akhirnya dapat
+                                menjawab kebutuhan masyarakat. Layanan informasi berbasis website sangatlah penting dalam
+                                meningkatkan eksistensi SD Negeri Bojongloa 1 yang merupakan instansi pendidikan formal,
+                                layanan web informasi ini nantinya akan menjadi wadah dalam menyebar luaskan
+                                berbagai informasi.
                             </p>
                         </div>
                     </div>
@@ -145,13 +147,12 @@
                             $imageUrl = $image
                                 ? route('image.stream', [
                                     'id' => $image->id,
-                                    'v' => $image->updated_at->timestamp
+                                    'v' => $image->updated_at->timestamp,
                                 ])
                                 : asset('images/default-image.png');
                         @endphp
 
-                        <img alt="{{ $item->title }}"
-                            class="w-full aspect-square rounded-md mx-3"
+                        <img alt="{{ $item->title }}" class="w-full aspect-square rounded-md mx-3"
                             src="{{ $imageUrl }}" />
                     @endforeach
                 </div>
