@@ -11,13 +11,9 @@
                     <div class="md:w-1/2 xl:w-5/12 flex flex-col items-center">
                         <div class="relative w-full max-w-xs md:max-w-sm overflow-hidden rounded-xl shadow-lg bg-gray-100">
                             <img alt="Kepala Sekolah SD Negeri Bojongloa 1"
-                                class="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
-                                src="{{ asset('images/headmaster-1.jpg') }}" loading="lazy" />
+                                class="w-full h-auto transition-transform duration-300 hover:scale-105"
+                                src="{{ asset('images/headmaster-2.jpg') }}" loading="lazy" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                        </div>
-                        <div class="mt-4 text-center">
-                            <p class="text-lg font-semibold text-gray-800">Asep Suryana, S.Pd</p>
-                            <p class="text-sm text-gray-600">Kepala Sekolah</p>
                         </div>
                     </div>
 
@@ -26,7 +22,7 @@
                         <!-- Konten tetap sama -->
                         <div class="mb-6">
                             <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 leading-tight">
-                                Sambutan Kepala Sekolah
+                                Selamat datang
                             </h2>
                             <div class="w-16 h-1 bg-indigo-600 rounded-full mt-2"></div>
                             <p class="text-base sm:text-lg text-gray-600 mt-2">SD Negeri Bojongloa 1</p>
