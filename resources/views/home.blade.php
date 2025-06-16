@@ -15,6 +15,10 @@
                                 src="{{ asset('images/headmaster-2.jpg') }}" loading="lazy" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                         </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-lg font-semibold text-gray-800">Kurnia Sandi, S.K.M</p>
+                            <p class="text-sm text-gray-600">Operator Sekolah</p>
+                        </div>
                     </div>
 
                     <!-- Content Section -->
