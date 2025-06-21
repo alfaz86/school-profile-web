@@ -1,11 +1,11 @@
-<footer class="bg-gray-100 text-gray-800 pt-8 px-4">
-    <div class="container mx-auto">
+<footer class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Top Section -->
         <div class="flex flex-col md:flex-row justify-between items-start mb-8 gap-8">
             <!-- Address and Logo -->
             <div class="flex-1">
                 <div class="flex items-center mb-4">
-                    <img src="{{ asset('images/elementary-school-logo.png') }}" alt="Elementary School Logo"
+                    <img src="{{ asset('images/logo-cyrcle.png') }}" alt="Logo SDN Bojongloa 1"
                         class="h-12 md:h-14 lg:h-16 mr-4">
                     <h3 class="font-piazzolla text-base font-bold">SDN Bojongloa 1</h3>
                 </div>

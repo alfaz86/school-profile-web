@@ -7,33 +7,21 @@
         </h2>
 
         <p class="text-indent-8 text-sm md:text-base lg:text-xl block text-gray-500 font-normal mb-4 text-justify">
-            Dahulu Desa Bojongloa terdiri dari dua desa yang terpisah, yaitu Desa Citaman yang terletak di
-            Dusun Citaman dan Desa Cilogang yang terletak di Dusun Sumber. Masing-masing desa memiliki
-            kepala desa, yaitu Desa Citaman yang saat itu dipimpin oleh Jaya Praja, sedangkan Desa Cilogang
-            dipimpin oleh Sumamanggala. Sekitar tahun 1940-an, kedua desa tersebut disatukan menjadi satu
-            desa melalui hasil musyawarah dan mufakat (<i>saur manuk</i>), yang kemudian diberi nama Desa
-            Bojongloa. Nama desa ini diambil dari nama dusun yang posisinya terletak di tengah-tengah antara
-            Desa Citaman dan Desa Cilogang. Saat pertama kali berdiri, Desa Bojongloa dipimpin oleh Jaya Praja sebagai
-            kepala desa terpilih.
+            Pendidikan Dasar SD NEGERI BOJONGLOA I, yang berdiri sejak 1956-01-01, merupakan lembaga pendidikan dasar tingkat SD yang berstatus Negeri, dan berada di bawah pembinaan Kementerian Pendidikan. Sekolah ini melayani pendidikan formal bagi anak-anak di wilayah desa Bojongloa, dengan fokus utama pada penguatan literasi, numerasi, serta pembentukan karakter yang berbasis pada Profil Pelajar Pancasila.
         </p>
 
         <p class="text-indent-8 text-sm md:text-base lg:text-xl block text-gray-500 font-normal mb-4 text-justify">
-            Nama Bojongloa berasal dari kata Bobojong, yang berarti sebuah tempat, dan
-            kata Loa, yang diambil dari nama pohon yang banyak tumbuh di daerah tersebut. Dari kedua kata
-            tersebut, terbentuklah nama Bojongloa, yang berarti sebuah tempat yang banyak ditumbuhi pohon
-            loa. Hingga saat ini, nama Desa Bojongloa tetap digunakan. Seiring berjalannya waktu serta perkembangan zaman
-            dan teknologi, Desa Bojongloa telah menjadi desa yang maju dan berkembang. Kepala desa telah mengalami beberapa
-            pergantian hingga sekarang.
+            Dalam menjalankan kegiatan belajar mengajar, SD NEGERI BOJONGLOA I menerapkan pendekatan pembelajaran aktif, kreatif, dan menyenangkan. Kurikulum yang digunakan memungkinkan siswa untuk belajar sesuai dengan tahap perkembangannya, serta menumbuhkan minat dan bakat secara optimal.
         </p>
 
         <p class="text-indent-8 text-sm md:text-base lg:text-xl block text-gray-500 font-normal mb-4 text-justify">
-            Desa Bojongloa, yang terletak di Kecamatan Buahdua, merupakan desa yang relatif subur dengan hamparan areal
-            pertanian yang luas. Berbagai jenis tanaman pangan dan hortikultura tumbuh di desa ini. Selain itu, pertumbuhan
-            ekonomi di desa ini terus berkembang, menjadikannya bagian dari sentra pertumbuhan ekonomi baru di wilayah utara
-            Sumedang. Masyarakat Desa Bojongloa pun aktif dalam berbagai kegiatan ekonomi kerakyatan serta program
-            pengentasan kemiskinan yang dijalankan oleh berbagai lembaga berwenang. Indeks Pembangunan Manusia di desa ini
-            terus mengalami peningkatan, terutama dalam tiga pilar utama, yaitu pendidikan, kesehatan, dan daya beli
-            masyarakat, yang menunjukkan hasil positif dalam pembangunan desa.
+            Tenaga pendidik yang kompeten, ramah, dan berdedikasi tinggi menjadi kekuatan utama dalam menciptakan suasana belajar yang kondusif. Siswa diajak untuk berpikir kritis, bekerja sama dalam kelompok, dan memecahkan masalah nyata dalam kehidupan sehari-hari.
+        </p>
+        <p class="text-indent-8 text-sm md:text-base lg:text-xl block text-gray-500 font-normal mb-4 text-justify">
+            Beragam kegiatan juga disediakan sebagai media pengembangan diri siswa, seperti pramuka, olahraga, serta kegiatan sosial yang membangun empati dan kepedulian terhadap sesama.
+        </p>
+        <p class="text-indent-8 text-sm md:text-base lg:text-xl block text-gray-500 font-normal mb-4 text-justify">
+            Seiring waktu, SD NEGERI BOJONGLOA I telah melahirkan lulusan-lulusan yang tidak hanya berprestasi secara akademik, tetapi juga memiliki kepribadian yang baik dan siap menghadapi tantangan di jenjang pendidikan berikutnya. Dengan komitmen untuk terus meningkatkan mutu pendidikan, sekolah ini menjadi pilihan terpercaya masyarakat desa Bojongloa dalam menyekolahkan anak-anak mereka.
         </p>
     </main>
 @endsection

@@ -2,13 +2,13 @@
 @section('content')
     <main class="py-4">
         <!-- Welcome Section -->
-        <section class="bg-white px-4 py-8 max-w-screen-xl mx-auto">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <section class="bg-white py-8">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Decorative divider -->
                 <div class="border-t-2 border-gray-300 my-4 py-4 text-center"></div>
                 <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10 lg:gap-16">
                     <!-- Image Section - Enhanced with better styling -->
-                    <div class="md:w-1/2 xl:w-5/12 flex flex-col items-center">
+                    <div class="md:w-1/2 xl:w-6/12 flex flex-col items-center">
                         <div class="relative w-full max-w-xs md:max-w-sm overflow-hidden rounded-xl shadow-lg bg-gray-100">
                             <img alt="Kepala Sekolah SD Negeri Bojongloa 1"
                                 class="w-full h-auto transition-transform duration-300 hover:scale-105"
@@ -22,7 +22,7 @@
                     </div>
 
                     <!-- Content Section -->
-                    <div class="w-full md:w-1/2 lg:w-7/12 mt-6 md:mt-0">
+                    <div class="w-full mt-6">
                         <!-- Konten tetap sama -->
                         <div class="mb-6">
                             <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 leading-tight">
@@ -54,8 +54,8 @@
             </div>
         </section>
         <!-- Profile Section -->
-        <section class="bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
-            <div class="container mx-auto max-w-7xl">
+        <section class="bg-gray-100 py-8">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row items-center gap-6 xl:gap-8">
                     <!-- Profile Info -->
                     <div class="w-full lg:w-1/2 xl:w-2/5">
@@ -63,8 +63,8 @@
                             Profil Sekolah
                         </h2>
                         <div class="mb-6 text-gray-600 text-sm lg:text-base">
-                            <p class="mb-4">Disamping ada profil kami dari alamat,</p>
-                            <p class="mb-4">akreditasi, tanah kepemilikan jumlah siswa dan guru.</p>
+                            <p class="p-0">Disamping ada profil kami dari alamat,</p>
+                            <p class="p-0">akreditasi, tanah kepemilikan jumlah siswa dan guru.</p>
                         </div>
                         <a href="{{ route('profil') }}"
                             class="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg inline-flex items-center hover:bg-blue-600 transition-colors duration-300 text-sm">
@@ -134,8 +134,8 @@
             </div>
         </section>
         <!-- Gallery Section -->
-        <section class="py-8 px-4 md:px-8">
-            <div class="container mx-auto">
+        <section class="bg-white py-8">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-2xl lg:text-3xl font-bold mb-4">Galeri</h2>
                 @php
                     $galleryImages = \App\Models\Gallery::latest()->take(6)->get();

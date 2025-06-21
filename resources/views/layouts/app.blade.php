@@ -36,7 +36,7 @@
                     </h1>
                 </div>
             @else
-                <div class="absolute inset-0 content-center mx-12 text-white">
+                <div class="container mx-auto px-4 absolute inset-0 content-center mx-12 text-white">
                     <h1 class="text-base md:text-lg lg:text-2xl font-bold">
                         MOTTO
                     </h1>
@@ -59,7 +59,7 @@
     </div>
     @include('components.navbar')
     @yield('content')
-    <div class="relative p-8 bg-gray-100">
+    <div class="relative py-8 bg-gray-100">
         @include('components.footer')
     </div>
 
