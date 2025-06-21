@@ -9,7 +9,7 @@
                     <tr>
                         <th class="border" style="padding: 20px">No</th>
                         <th class="border" style="padding: 20px">Nama Siswa</th>
-                        <th class="border" style="padding: 20px">NIS</th>
+                        <th class="border" style="padding: 20px">NISN</th>
                         <th class="border" style="padding: 20px">Jenis Kelamin</th>
                         <th class="border" style="padding: 20px">Kelas</th>
                     </tr>

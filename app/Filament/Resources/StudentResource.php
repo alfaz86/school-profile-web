@@ -49,7 +49,7 @@ class StudentResource extends Resource
                                     ->required(),
 
                                 TextInput::make('nis')
-                                    ->label('NIS')
+                                    ->label('NISN')
                                     ->placeholder('Contoh: 123456')
                                     ->numeric()
                                     ->required()
@@ -91,7 +91,7 @@ class StudentResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('nis')
-                    ->label('NIS')
+                    ->label('NISN')
                     ->searchable(),
 
                 TextColumn::make('gender')
