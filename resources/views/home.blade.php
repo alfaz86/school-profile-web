@@ -124,7 +124,7 @@
                                         Sejarah
                                     </h3>
                                     <p class="text-gray-500 text-sm lg:text-base">
-                                        Jejak sejarah desa dan SD Bojongloa
+                                        Sejarah SD Negeri Bojongloa 1
                                     </p>
                                 </div>
                             </a>

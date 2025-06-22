@@ -3,7 +3,7 @@
 @section('content')
     <main class="flex-grow bg-white py-12 px-8 md:px-16 lg:px-32">
         <h2 class="font-bold mb-6 flex items-center justify-center text-2xl md:text-3xl lg:text-4xl">
-            Sejarah Desa
+            Sejarah Sekolah
         </h2>
 
         <p class="text-indent-8 text-sm md:text-base lg:text-xl block text-gray-500 font-normal mb-4 text-justify">

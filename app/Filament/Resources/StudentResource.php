@@ -92,6 +92,7 @@ class StudentResource extends Resource
 
                 TextColumn::make('nis')
                     ->label('NISN')
+                    ->sortable()
                     ->searchable(),
 
                 TextColumn::make('gender')
