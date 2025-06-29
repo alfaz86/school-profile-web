@@ -81,7 +81,7 @@
                 <table class="w-full border-collapse mb-8 overflow-hidden rounded-md">
                     <thead>
                         <tr class="bg-blue-500 text-white text-xs md:text-sm lg:text-base">
-                            <th colspan="9" class="border p-2">Tahun 2024</th>
+                            <th colspan="9" class="border p-2">Tahun 2025</th>
                         </tr>
                         <tr class="bg-white text-black text-xs md:text-sm lg:text-base">
                             <th colspan="2" class="border p-2">Kelas 1</th>
@@ -124,7 +124,7 @@
                 <table class="w-full border-collapse mb-8 overflow-hidden rounded-md">
                     <thead>
                         <tr class="bg-blue-500 text-white text-xs md:text-sm lg:text-base">
-                            <th colspan="9" class="border p-2">Tahun 2024</th>
+                            <th colspan="9" class="border p-2">Tahun 2025</th>
                         </tr>
                         <tr class="bg-white text-black text-xs md:text-sm lg:text-base">
                             <th colspan="2" class="border p-2">Kelas 4</th>
